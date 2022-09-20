@@ -42,9 +42,9 @@ t_string	ft_strjoin(t_string const s1, t_string const s2)
 
 t_string	ft_strdup(t_string const s1)
 {
-	char	*result;
-	size_t	len;
-	size_t	i;
+	t_string	result;
+	size_t		len;
+	size_t		i;
 
 	i = -1;
 	len = ft_strlen(s1);
@@ -53,4 +53,83 @@ t_string	ft_strdup(t_string const s1)
 		result[i] = s1[i];
 	result[i] = 0;
 	return (result);
+}
+
+t_bool	contains(t_string str, char ch)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == ch)
+			return (TRUE);
+	}
+	return (FALSE);
+}
+
+t_bool	is_empty_line(t_string line)
+{
+	int	i;
+
+	if (!line)
+		return (FALSE);
+	i = -1;
+	while (line[++i])
+		if (!contains("\n \t", line[i]))
+			return (FALSE);
+	return (TRUE);
+}
+
+t_bool	starts_with(t_string token, char start)
+{
+	return (token && (token[0] == start));
+}
+
+t_bool	starts_with_string(t_string str1, t_string str2)
+{
+	int	i;
+
+	i = 0;
+	if (!str1 || !str2)
+		return (FALSE);
+	while (str1[i] && str1[i] == str2[i])
+		i++;
+	return (!(str1[i]));
+}
+
+t_bool	ft_strcmp(t_string s1, t_string s2)
+{
+	int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (FALSE);
+	while (s1[i] != '\0')
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return (FALSE);
+	}
+	return (s1[i] == s2[i]);
+}
+
+t_bool	is_numeric_string(t_string str)
+{
+	int	i;
+
+	if (!str)
+		return (FALSE);
+	i = -1;
+	while (str[++i])
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (FALSE);
+	return (TRUE);
+}
+
+t_bool	is_unsigned_char(t_string str)
+{
+	return (is_numeric_string(str) && !(ft_strlen(str) > 3
+			|| (ft_strlen(str) == 3 && ft_strcmp(str, "256") > 0)));
 }

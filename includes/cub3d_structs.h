@@ -5,32 +5,45 @@ typedef char				t_bool;
 typedef char *				t_string;
 typedef char **				t_text;
 typedef struct s_textures	t_textures;
+typedef struct s_img		t_img;
+typedef struct s_data		t_data;
+typedef struct s_color		t_color;
 
-typedef struct data
+struct s_data
 {
 	void		*mlx;
-	void		*mlx_window;
+	void		*window;
 
-	t_text		*map;
-	t_textures	*textures;	
-}				t_data;
+	t_text		map;
+	t_color		*floor_color;
+	t_color		*ceiling_color;
+	t_text		texture_paths;
+	t_text		color_strings;
+	t_dict		*input_dict;
+	t_textures	*textures;
+};
 
-typedef struct s_img
+struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
 	int		width;
 	int		height;
-}				t_img;
+};
 
-
-typedef struct s_textures
+struct s_textures
 {
-	t_img	north;
-	t_img	east;
-	t_img	west;
-	t_img	south;
-	t_img	floor;
-	t_img	ceiling;
-}				t_textures;
+	t_img	*north;
+	t_img	*east;
+	t_img	*west;
+	t_img	*south;
+};
+
+struct s_color
+{
+	unsigned char	red;
+	unsigned char	green;
+	unsigned char	blue;
+};
+
 #endif

@@ -11,9 +11,13 @@
 # include "cub3d_structs.h"
 # include "cub3d_macros.h"
 # include "cub3d_utils.h"
-
-// parsing/validation
+# include "linkedlist.h"
+// validation
 t_bool	validate_input_file(t_string input);
+t_bool	validate_input_paths(t_data *data);
+t_bool	validate_map(t_data *data);
+
+// parsing
 t_bool	parse(t_string path, t_data *data);
 
 
