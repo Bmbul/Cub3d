@@ -95,7 +95,7 @@ t_bool	starts_with_string(t_string str1, t_string str2)
 		return (FALSE);
 	while (str1[i] && str1[i] == str2[i])
 		i++;
-	return (!(str1[i]));
+	return (!(str1[i]) || !(str2[i]));
 }
 
 t_bool	ft_strcmp(t_string s1, t_string s2)
@@ -132,4 +132,31 @@ t_bool	is_unsigned_char(t_string str)
 {
 	return (is_numeric_string(str) && !(ft_strlen(str) > 3
 			|| (ft_strlen(str) == 3 && ft_strcmp(str, "256") > 0)));
+}
+
+t_bool	str_contains_only(t_string word, t_string charset)
+{
+	int	i;
+	int	j;
+	int	found;
+
+	i = -1;
+	if (!word || !charset)
+		return (FALSE);
+	while (word[++i])
+	{
+		j = -1;
+		found = 0;
+		while (charset[++j])
+		{
+			if (word[i] == charset[j])
+			{
+				found = 1;
+				break ;
+			}
+		}
+		if (!found)
+			return (FALSE);
+	}
+	return (TRUE);
 }

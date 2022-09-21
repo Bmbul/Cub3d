@@ -20,7 +20,7 @@ typedef struct s_dict
 }	t_dict;
 
 // linkedlist.c
-t_dict	*new_list(void);
+t_dict	*new_dict(void);
 void	add(t_dict *list, t_node *node);
 t_node	*new_node(char *key, char *value);
 void	remove_with_key(t_dict *list, char *key);

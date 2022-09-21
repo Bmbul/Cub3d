@@ -2,8 +2,9 @@
 
 void	guard_free(void *data)
 {
-	if (data)
-		free(data);
+	if (!data)
+		return ;
+	free(data);
 	data = NULL;
 }
 
@@ -15,6 +16,6 @@ void	free_array(t_text arr)
 	if (!arr)
 		return ;
 	while (arr[++i])
-		free(arr[i]);
-	free(arr);
+		guard_free(arr[i]);
+	guard_free(arr);
 }

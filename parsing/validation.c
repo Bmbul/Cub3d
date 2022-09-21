@@ -17,6 +17,8 @@ t_bool	validate_input_paths(t_data *data)
 
 	if (data->input_dict->count != 6)
 		return (FALSE);
+	data->textures = malloc(sizeof(t_textures));
+	current = data->input_dict->head;
 	while (current)
 	{
 		if (!add_to_data(current, data))
@@ -32,11 +34,13 @@ t_bool	validate_input_paths(t_data *data)
 
 t_bool	validate_map(t_data *data)
 {
-	int i;
+	(void)data;
+	return (FALSE);
+	// int i;
 
-	i = -1;
-	while (data->map[++i])
-	{
-		if ()
-	}
+	// i = -1;
+	// while (data->map[++i])
+	// {
+	// 	if ()
+	// }
 }

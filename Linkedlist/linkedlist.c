@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-t_dict	*new_list(void)
+t_dict	*new_dict(void)
 {
 	t_dict	*list;
 
