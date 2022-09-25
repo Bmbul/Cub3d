@@ -34,7 +34,7 @@ void	print_map(t_data *data)
 	if (!data->map)
 		return ;
 	i = -1;
-	printf("\t\tMAP\t\t\n");
+	printf("\t\tMAP\t\t      \n");
 	while (data->map[++i])
 		printf("%s\n", data->map[i]);
 }
@@ -52,7 +52,6 @@ t_bool	parse(t_string path, t_data *data)
 		print_error("Bad input arguments.");
 		return (FALSE);
 	}
-	write(1, "finished validating arguments\n", 30);
 	if (!validate_map(data))
 	{
 		printf("not valid map");

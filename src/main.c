@@ -1,5 +1,8 @@
 # include "cub3d.h"
 
+//	to run program
+//	gcc -Wall -Wextra -Werror */*.c -I includes -l mlx -framework AppKit -framework OpenGL
+
 int	main(int argc, t_string *argv)
 {
 	t_data	*data;
