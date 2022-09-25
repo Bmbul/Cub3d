@@ -16,6 +16,8 @@ t_data	*data_init(void)
 	data->texture_paths = malloc(sizeof(t_text));
 	data->input_dict = new_dict();
 	data->map_list = new_list();
+	data->map_height = 0;
+	data->map_width = 0;
 	return (data);
 }
 
@@ -35,7 +37,6 @@ void	print_data(t_data *data)
 	if (!data)
 		print_error_and_exit("NO DATA\n");
 	current = data->input_dict->head;
-	set_color(GREEN_TERM, 1);
 	while (++i < data->input_dict->count)
 	{
 		printf("key: %s, value %s\n", current->key, current->value);
@@ -49,13 +50,13 @@ void	print_data(t_data *data)
 t_bool	add_to_data(t_node *data_node, t_data *data)
 {
 	if (ft_strcmp(data_node->key, "NO"))
-		data->texture_paths[NORTH] = ft_strdup(data_node->value);
+		data->texture_paths[_NORTH] = ft_strdup(data_node->value);
 	else if (ft_strcmp(data_node->key, "EA"))
-		data->texture_paths[EAST] = ft_strdup(data_node->value);
+		data->texture_paths[_EAST] = ft_strdup(data_node->value);
 	else if (ft_strcmp(data_node->key, "WE"))
-		data->texture_paths[WEST] = ft_strdup(data_node->value);
+		data->texture_paths[_WEST] = ft_strdup(data_node->value);
 	else if (ft_strcmp(data_node->key, "SO"))
-		data->texture_paths[SOUTH] = ft_strdup(data_node->value);
+		data->texture_paths[_SOUTH] = ft_strdup(data_node->value);
 	else if (ft_strcmp(data_node->key, "F"))
 	{
 		data->floor_color = new_color(data_node->value);

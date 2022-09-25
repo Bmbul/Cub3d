@@ -141,6 +141,7 @@ t_bool	str_contains_only(t_string word, t_string charset)
 	int	found;
 
 	i = -1;
+	printf("word = %s", word);
 	if (!word || !charset)
 		return (FALSE);
 	while (word[++i])

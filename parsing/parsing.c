@@ -31,6 +31,8 @@ void	print_map(t_data *data)
 {
 	int	i;
 
+	if (!data->map)
+		return ;
 	i = -1;
 	printf("\t\tMAP\t\t\n");
 	while (data->map[++i])
@@ -52,7 +54,12 @@ t_bool	parse(t_string path, t_data *data)
 	}
 	write(1, "finished validating arguments\n", 30);
 	if (!validate_map(data))
+	{
+		printf("not valid map");
 		return (FALSE);
+	}
+	printf("map validated\n");
+	return (FALSE);
 	mlx_data_init(data);
 	if (!data->textures->east.mlx_img || !data->textures->west.mlx_img
 		|| !data->textures->north.mlx_img || !data->textures->south.mlx_img

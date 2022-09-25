@@ -1,9 +1,11 @@
 #include "cub3d.h"
 
-void	fill_map_list(t_string line, t_data *data)
+t_bool	fill_map_list(t_string line, t_data *data)
 {
 	while (1)
 	{
+		if (!str_contains_only(line, MAP_CHARS_WN))
+			return (FALSE);
 		add_node(data->map_list, new_lnode(line));
 		line = get_next_line(data->fd);
 		if (!line)
@@ -11,6 +13,7 @@ void	fill_map_list(t_string line, t_data *data)
 	}
 	while (is_empty_line(data->map_list->tail->value))
 		remove_node(data->map_list);
+	return (TRUE);
 }
 
 void	fill_map_line(t_data *data, int index, t_string value)
@@ -32,7 +35,8 @@ void	fill_map(t_string line, t_data *data)
 	t_lnode	*current;
 
 	i = -1;
-	fill_map_list(line, data);
+	if (!fill_map_list(line, data))
+		return ;
 	data->map_width = get_longest_line(data->map_list);
 	data->map_height = data->map_list->count;
 	if (data->map_width == 0)

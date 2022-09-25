@@ -12,8 +12,15 @@
 # define TEXTURES_COUNT		4
 
 // map
-# define MAP_CHARS			"01NEWS \t"
-
+# define MAP_CHARS			"01NEWS "
+# define MAP_CHARS_WN		"01NEWS \n"
+# define WALL				'1'
+# define GROUND				'0'
+# define NORTH				'N'
+# define EAST				'E'
+# define WEST				'W'
+# define SOUTH				'S'
+# define EMPTY				' '
 
 // colors
 # define BLACK_TERM			"\033[0;30m"				
@@ -23,9 +30,9 @@
 # define SEP_TERM			"\033[1;36m"
 
 // directions
-# define NORTH				0
-# define EAST				1
-# define WEST				2
-# define SOUTH				3
+# define _NORTH				0
+# define _EAST				1
+# define _WEST				2
+# define _SOUTH				3
 
 #endif

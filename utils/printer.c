@@ -3,6 +3,7 @@
 void	set_color(t_string color, int fd)
 {
 	write(fd, color, ft_strlen(color));
+	write(fd, "\n", 1);
 }
 
 void	set_error_color(void)

@@ -13,8 +13,8 @@ t_img	img_init(t_data *data, char *addr)
 void	textures_init(t_data *data)
 {
 	data->textures = malloc(sizeof(t_textures));
-	data->textures->north = img_init(data, data->texture_paths[NORTH]);
-	data->textures->east = img_init(data, data->texture_paths[EAST]);
-	data->textures->west = img_init(data, data->texture_paths[WEST]);
-	data->textures->south = img_init(data, data->texture_paths[SOUTH]);
+	data->textures->north = img_init(data, data->texture_paths[_NORTH]);
+	data->textures->east = img_init(data, data->texture_paths[_EAST]);
+	data->textures->west = img_init(data, data->texture_paths[_WEST]);
+	data->textures->south = img_init(data, data->texture_paths[_SOUTH]);
 }

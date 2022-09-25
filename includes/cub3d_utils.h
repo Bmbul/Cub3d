@@ -46,7 +46,7 @@ void			free_array(t_text arr);
 t_text			ft_split(t_string const s, char c);
 
 // printer.c
-void			set_color(t_string color,int fd);
+void			set_color(t_string color, int fd);
 void			reset_color(int fd);
 void			print_error(t_string error);
 void			print_error_and_exit(t_string	error);
