@@ -14,6 +14,7 @@ struct s_data
 	void		*mlx;
 	void		*window;
 
+	int			fd;
 	t_text		map;
 	t_color		*floor_color;
 	t_color		*ceiling_color;
@@ -21,6 +22,8 @@ struct s_data
 	t_text		color_strings;
 	t_dict		*input_dict;
 	t_textures	*textures;
+	t_list		*map_list;
+	//const t_img	empty;
 };
 
 struct s_img
@@ -33,10 +36,10 @@ struct s_img
 
 struct s_textures
 {
-	t_img	*north;
-	t_img	*east;
-	t_img	*west;
-	t_img	*south;
+	t_img	north;
+	t_img	east;
+	t_img	west;
+	t_img	south;
 };
 
 struct s_color

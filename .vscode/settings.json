@@ -1,6 +1,10 @@
 {
 	"files.associations": {
 		"cub3d.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"cub3d_macros.h": "c",
+		"dictionary.h": "c",
+		"__config": "c",
+		"cub3d_structs.h": "c"
 	}
 }

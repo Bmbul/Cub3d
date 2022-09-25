@@ -2,5 +2,5 @@
 
 void	start_game(t_data	*data)
 {
-	(void) data;
+	mlx_loop(data->mlx);
 }

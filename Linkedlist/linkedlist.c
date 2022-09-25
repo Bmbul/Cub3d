@@ -1,71 +1,66 @@
-#include "cub3d.h"
+# include "cub3d.h"
 
-t_dict	*new_dict(void)
+t_list	*new_list(void)
 {
-	t_dict	*list;
+	t_list	*list;
 
-	list = malloc(sizeof(t_dict));
+	list = malloc(sizeof(t_list));
 	list->count = 0;
 	list->head = NULL;
 	list->tail = NULL;
 	return (list);
 }
 
-t_node	*new_node(char *key, char *value)
+t_lnode	*new_lnode(t_string value)
 {
-	t_node	*node;
+	t_lnode	*node;
 
-	node = malloc(sizeof(t_node));
-	node->key = ft_strdup(key);
-	if (value)
-		node->value = ft_strdup(value);
-	else
-		node->value = NULL;
+	node = malloc(sizeof(t_lnode));
+	node->value = value;
 	node->next = NULL;
-	node->index = -1;
+	node->prev = NULL;
 	return (node);
 }
 
-void	add(t_dict *list, t_node *node)
+void	add_node(t_list *list, t_lnode *node)
 {
-	node->prev = list->tail;
-	if (list->count == 0)
+	if (!node || !list)
+		return ;
+	if (!list->head)
 		list->head = node;
 	else
+	{
 		list->tail->next = node;
+		node->prev = list->tail;
+	}
 	list->tail = node;
 	list->count++;
 }
 
-void	remove_with_key(t_dict *list, char *key)
+void	free_lnode(t_lnode *node)
 {
-	t_node	*removing_node;
+	guard_free(node->value);
+	guard_free(node);
+}
 
-	removing_node = find_node_with_key(list, key);
-	if (!removing_node)
+void	remove_node(t_list *list)
+{
+	t_lnode	*new_last;
+
+	if (!list || !list->head)
 		return ;
 	if (list->count == 1)
 	{
+		free_lnode(list->head);
 		list->head = NULL;
 		list->tail = NULL;
 	}
-	else if (removing_node == list->head)
-		list->head = list->head->next;
-	if (removing_node->next)
-		removing_node->next->prev = removing_node->prev;
-	if (removing_node->prev)
-		removing_node->prev->next = removing_node->next;
-	free(removing_node);
+	else
+	{
+		new_last = list->tail->prev;
+		free_lnode(list->tail);
+		list->tail = new_last;
+		list->tail->next = NULL;
+	}
 	list->count--;
-}
-
-void	update_with_key(t_dict *list, char *key, char *new_value)
-{
-	t_node	*updating_node;
-	char	*previous_value;
-
-	updating_node = find_node_with_key(list, key);
-	previous_value = updating_node->value;
-	updating_node->value = ft_strdup(new_value);
-	free(previous_value);
 }

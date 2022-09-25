@@ -1,9 +1,24 @@
 #include "cub3d.h"
 
-void	fill_map(int fd, t_data *data)
+void	fill_map(t_string line, t_data *data)
 {
-	(void)fd;
-	(void)data;
+	int	i;
+	int	count;
+	int	max_len;
+
+	i = 0;
+	count = 0;
+	while (1)
+	{
+		add_node(data->map_list, new_lnode(line));
+		line = get_next_line(data->fd);
+		if (!line)
+			break ;
+	}
+	while (is_empty_line(data->map_list->tail->value))
+		remove_node(data->map_list);
+	max_len = get_longest_line(data->map_list);
+	printf("max len = %d\n", max_len);
 }
 
 t_bool	fill_attribute(t_string line, t_data *data)
@@ -22,7 +37,7 @@ t_bool	fill_attribute(t_string line, t_data *data)
 	return (TRUE);
 }
 
-void	read_from_input(int fd, t_data *data)
+void	read_from_input(t_data *data)
 {
 	t_string	line;
 	t_text		splitted;
@@ -32,10 +47,9 @@ void	read_from_input(int fd, t_data *data)
 	splitted = NULL;
 	while (!stop)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(data->fd);
 		if (!line)
 			break ;
-		printf("the line %s\n", line);
 		if (is_empty_line(line))
 			continue ;
 		if (is_attribute(line))
@@ -44,29 +58,33 @@ void	read_from_input(int fd, t_data *data)
 				break ;
 		}
 		else if (is_start_of_map(line, &stop))
-			(fill_map(fd, data));
+			(fill_map(line, data));
 	}
 	guard_free(line);
 }
 
 t_bool	parse(t_string path, t_data *data)
 {
-	int	fd;
-
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
+	data->fd = open(path, O_RDONLY);
+	if (data->fd == -1)
 		print_error_and_exit("Could not open the input file!!");
-	write(1, "trying to read\n", 15);
-	read_from_input(fd, data);
+	read_from_input(data);
 	print_data(data);
-	if (!validate_input_paths(data))
+	print_list(data->map_list);
+	if (!validate_arguments(data))
 	{
-		print_error("Bad input properties");
+		print_error("Bad input arguments.");
 		return (FALSE);
 	}
+	write(1, "finished validating arguments\n", 30);
 	if (!validate_map(data))
+		return (FALSE);
+	mlx_data_init(data);
+	if (!data->textures->east.mlx_img || !data->textures->west.mlx_img
+		|| !data->textures->north.mlx_img || !data->textures->south.mlx_img
+		|| !data->floor_color || !data->ceiling_color)
 	{
-		print_error("Bad input map");
+		printf("could not validate textures\n");
 		return (FALSE);
 	}
 	return (TRUE);

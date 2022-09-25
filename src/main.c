@@ -8,7 +8,7 @@ int	main(int argc, t_string *argv)
 		print_error_and_exit("Wrong number of arguments!!");
 	if (!validate_input_file(argv[1]))
 		print_error_and_exit("Bad input! Give valid file name");
-	data = init_data();
+	data = data_init();
 	if (!parse(argv[1], data))
 	{
 		free_data(data);

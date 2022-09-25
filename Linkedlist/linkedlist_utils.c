@@ -1,36 +1,25 @@
-#include "cub3d.h"
+# include "cub3d.h"
 
-t_node	*find_node_with_key(t_dict *list, char *key)
+static void	print_lnode(t_lnode *node)
 {
-	t_node	*node;
-
-	if (list->count <= 0)
-		return (NULL);
-	node = list->head;
-	while (node)
-	{
-		if (!ft_strcmp(key, node->key))
-			return (node);
-		node = node->next;
-	}
-	return (NULL);
+	printf("%s", node->value);
 }
 
-void	for_each(t_dict *list, void (*func)(t_node *))
+static void	for_each_list(t_list *list, void (*func)(t_lnode *))
 {
-	int		i;
-	t_node	*current;
+	t_lnode	*current;
 
-	i = -1;
+	if (list->count == 0)
+		return ;
 	current = list->head;
-	while (++i < list->count)
+	while (current)
 	{
 		func(current);
 		current = current->next;
 	}
 }
 
-void	unset_index(t_node *node)
+void	print_list(t_list *list)
 {
-	node->index = -1;
+	for_each_list(list, print_lnode);
 }

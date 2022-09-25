@@ -1,41 +1,33 @@
 #ifndef LINKEDLIST_H
 # define LINKEDLIST_H
 
-typedef struct s_node	t_node;
+typedef struct s_lnode	t_lnode;
 
-struct s_node
+struct s_lnode
 {
-	char	*key;
 	char	*value;
-	t_node	*next;
-	t_node	*prev;
-	int		index;
+	t_lnode	*next;
+	t_lnode	*prev;
 };
 
-typedef struct s_dict
+typedef struct s_list
 {
-	t_node	*head;
-	t_node	*tail;
+	t_lnode	*head;
+	t_lnode	*tail;
 	int		count;
-}	t_dict;
+}	t_list;
+
+// linkedlist_additional_functionality.c
+int		get_longest_line(t_list *list);
+
+//	linkedlist_utils.c
+void	print_list(t_list *list);
 
 // linkedlist.c
-t_dict	*new_dict(void);
-void	add(t_dict *list, t_node *node);
-t_node	*new_node(char *key, char *value);
-void	remove_with_key(t_dict *list, char *key);
-void	update_with_key(t_dict *list, char *key, char *new_value);
-
-// linkedlist_utils.c
-t_node	*find_node_with_key(t_dict *list, char *key);
-void	for_each(t_dict *list, void (*func)(t_node *));
-
-// linkedlist_free.c
-void	free_list(t_dict *list);
-void	unset_index(t_node *node);
-
-// linkedlist_printer.c
-void	print_dict(t_dict *list);
-void	print_env_node(t_node *node);
+t_list	*new_list(void);
+t_lnode	*new_lnode(char *value);
+void	add_node(t_list *list, t_lnode *node);
+void	free_lnode(t_lnode *node);
+void	remove_node(t_list *list);
 
 #endif

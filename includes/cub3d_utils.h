@@ -35,6 +35,7 @@ t_bool			ft_strcmp(t_string s1, t_string s2);
 t_bool			is_numeric_string(t_string str);
 t_bool			is_unsigned_char(t_string str);
 t_bool			str_contains_only(t_string word, t_string charset);
+t_bool			has_extention(t_string path, t_string extention);
 
 // free.c
 void			guard_free(void *data);
@@ -44,8 +45,8 @@ void			free_array(t_text arr);
 t_text			ft_split(t_string const s, char c);
 
 // printer.c
-void			set_color(t_string color);
-void			reset_color(void);
+void			set_color(t_string color,int fd);
+void			reset_color(int fd);
 void			print_error(t_string error);
 void			print_error_and_exit(t_string	error);
 
