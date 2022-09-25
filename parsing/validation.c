@@ -43,9 +43,12 @@ t_bool	validate_texture_paths(t_data *data)
 	i = -1;
 	while (++i < TEXTURES_COUNT)
 	{
-		printf("validating %d\n", i);
+		//printf("validating %d\n", i);
 		if (!has_extention(data->texture_paths[i], "xpm"))
+		{
+			printf("Does not have right extention: %s\n", data->texture_paths[i]);
 			return (FALSE);
+		}
 		fd = open(data->texture_paths[i], O_RDONLY);
 		if (fd == -1)
 			return (FALSE);

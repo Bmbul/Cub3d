@@ -22,6 +22,7 @@ int		get_longest_line(t_list *list);
 
 //	linkedlist_utils.c
 void	print_list(t_list *list);
+void	free_list(t_list *list);
 
 // linkedlist.c
 t_list	*new_list(void);

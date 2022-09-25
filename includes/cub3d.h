@@ -34,6 +34,11 @@ t_data	*data_init(void);
 t_bool	add_to_data(t_node *data_node, t_data *data);
 void	mlx_data_init(t_data *data);
 
+// fill_data.c
+void	fill_map_list(t_string line, t_data *data);
+void	fill_map(t_string line, t_data *data);
+t_bool	fill_attribute(t_string line, t_data *data);
+
 // free_data.c
 void	free_data(t_data *data);
 

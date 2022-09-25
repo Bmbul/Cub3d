@@ -38,7 +38,8 @@ t_bool			str_contains_only(t_string word, t_string charset);
 t_bool			has_extention(t_string path, t_string extention);
 
 // free.c
-void			guard_free(void *data);
+void			ft_free(void *data);
+void			guard_free(char **str);
 void			free_array(t_text arr);
 
 // ft_split.c

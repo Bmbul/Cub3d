@@ -39,19 +39,18 @@ void	add_node(t_list *list, t_lnode *node)
 
 void	free_lnode(t_lnode *node)
 {
-	guard_free(node->value);
-	guard_free(node);
+	guard_free(&node->value);
+	ft_free(node);
 }
 
 void	remove_node(t_list *list)
 {
 	t_lnode	*new_last;
-
 	if (!list || !list->head)
 		return ;
 	if (list->count == 1)
 	{
-		free_lnode(list->head);
+		free_lnode(list->tail);
 		list->head = NULL;
 		list->tail = NULL;
 	}

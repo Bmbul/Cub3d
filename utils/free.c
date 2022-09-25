@@ -1,6 +1,14 @@
 #include "cub3d.h"
 
-void	guard_free(void *data)
+void	guard_free(t_text str)
+{
+	if (!(*str))
+		return ;
+	free(*str);
+	*str = NULL;
+}
+
+void	ft_free(void *data)
 {
 	if (!data)
 		return ;
@@ -16,6 +24,6 @@ void	free_array(t_text arr)
 	if (!arr)
 		return ;
 	while (arr[++i])
-		guard_free(arr[i]);
-	guard_free(arr);
+		guard_free(&arr[i]);
+	ft_free(arr);
 }

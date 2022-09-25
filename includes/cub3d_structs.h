@@ -16,6 +16,8 @@ struct s_data
 
 	int			fd;
 	t_text		map;
+	int			map_width;
+	int			map_height;
 	t_color		*floor_color;
 	t_color		*ceiling_color;
 	t_text		texture_paths;
