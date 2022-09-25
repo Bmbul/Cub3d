@@ -78,7 +78,9 @@ t_bool	validate_map(t_data *data)
 {
 	int	row;
 	int	col;
+	int	start_count;
 
+	start_count = 0;
 	row = -1;
 	if (!data->map || !data->map_height || !data->map_width)
 		return (FALSE);
@@ -90,8 +92,10 @@ t_bool	validate_map(t_data *data)
 			if (data->map[row][col] == GROUND)
 				if (not_surrounded_by_walls(data, row, col))
 					return (FALSE);
+			if (contains("NEWS", data->map[row][col]))
+				start_count++;
 			//printf("validated map[%d][%d] = %c\n", row, col, data->map[row][col]);
 		}
 	}
-	return (TRUE);
+	return (start_count == 1);
 }
