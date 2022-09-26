@@ -8,6 +8,9 @@ typedef struct s_textures	t_textures;
 typedef struct s_img		t_img;
 typedef struct s_data		t_data;
 typedef struct s_color		t_color;
+typedef struct s_player		t_player;
+
+
 
 struct s_data
 {
@@ -25,8 +28,16 @@ struct s_data
 	t_dict		*input_dict;
 	t_textures	*textures;
 	t_list		*map_list;
+	t_player	*player;
 	//const t_img	empty;
 };
+
+struct s_player
+{
+	t_vector	pos;
+	t_vector	dir;
+};
+
 
 struct s_img
 {
