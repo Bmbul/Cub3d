@@ -1,5 +1,7 @@
 NAME = cub3D
 
+MAP = maps/map1.cub
+
 CC = cc
 
 RM = rm -rf
@@ -14,7 +16,10 @@ SRCS = $(wildcard */*.c)
 
 SRC_OBJS = $(addprefix ,$(SRCS:.c=.o))
 
-all: $(NAME)
+all: $(NAME) clean run
+
+run:
+	./${NAME} ${MAP}
 
 $(NAME): $(SRC_OBJS)
 	@$(CC) $(FLAGS) $(SRC_OBJS) $(INCLUDES) $(LINKER) -o $(NAME)
@@ -30,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus run
