@@ -57,8 +57,8 @@ t_bool	parse(t_string path, t_data *data)
 		printf("not valid map");
 		return (FALSE);
 	}
-	printf("map validated\n");
-	//return (FALSE);
+	// printf("map validated\n");
+	// return (FALSE);
 	mlx_data_init(data);
 	if (!data->textures->east.mlx_img || !data->textures->west.mlx_img
 		|| !data->textures->north.mlx_img || !data->textures->south.mlx_img
