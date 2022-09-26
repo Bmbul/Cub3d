@@ -11,6 +11,7 @@
 
 # include "dictionary.h"
 # include "linkedlist.h"
+# include "vector.h"
 # include "cub3d_macros.h"
 # include "cub3d_structs.h"
 # include "cub3d_utils.h"

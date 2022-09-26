@@ -1,10 +1,14 @@
 #ifndef CUB3D_MACROS_H
 # define CUB3D_MACROS_H
 
+//  PROJECT
+# define WIN_WIDTH		720
+# define WIN_HEIGHT		720
+
+
 // boolean
 # define TRUE				1
 # define FALSE				0
-
 
 # define ERROR_CODE			1
 

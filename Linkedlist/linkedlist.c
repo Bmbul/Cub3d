@@ -46,6 +46,7 @@ void	free_lnode(t_lnode *node)
 void	remove_node(t_list *list)
 {
 	t_lnode	*new_last;
+
 	if (!list || !list->head)
 		return ;
 	if (list->count == 1)

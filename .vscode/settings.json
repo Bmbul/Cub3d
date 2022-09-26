@@ -5,6 +5,12 @@
 		"cub3d_macros.h": "c",
 		"dictionary.h": "c",
 		"__config": "c",
-		"cub3d_structs.h": "c"
+		"cub3d_structs.h": "c",
+		"cub3d_utils.h": "c",
+		"iterator": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c"
 	}
 }

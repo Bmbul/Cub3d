@@ -24,7 +24,7 @@ t_data	*data_init(void)
 void	mlx_data_init(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->window = mlx_new_window(data->mlx, 500, 500, "Cub3D");
+	data->window = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	textures_init(data);
 }
 
