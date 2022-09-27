@@ -10,13 +10,8 @@ typedef struct s_data		t_data;
 typedef struct s_color		t_color;
 typedef struct s_player		t_player;
 
-
-
 struct s_data
 {
-	void		*mlx;
-	void		*window;
-
 	int			fd;
 	t_text		map;
 	int			map_width;
@@ -29,6 +24,10 @@ struct s_data
 	t_textures	*textures;
 	t_list		*map_list;
 	t_player	*player;
+	void		*mlx;
+	void		*window;
+	//t_vector	camera_plane;
+	//t_direction	dir;
 	//const t_img	empty;
 };
 
@@ -37,7 +36,6 @@ struct s_player
 	t_vector	pos;
 	t_vector	dir;
 };
-
 
 struct s_img
 {
@@ -49,10 +47,10 @@ struct s_img
 
 struct s_textures
 {
-	t_img	north;
-	t_img	east;
-	t_img	west;
-	t_img	south;
+	t_img	*north;
+	t_img	*east;
+	t_img	*west;
+	t_img	*south;
 };
 
 struct s_color

@@ -1,10 +1,10 @@
 #ifndef CUB3D_MACROS_H
 # define CUB3D_MACROS_H
 
-//  PROJECT
+//  GAME
 # define WIN_WIDTH		960
 # define WIN_HEIGHT		600
-
+# define SENSITIVITY	1
 
 // boolean
 # define TRUE				1

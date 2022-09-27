@@ -11,7 +11,7 @@ void	read_from_input(t_data *data)
 	line = NULL;
 	while (!stop)
 	{
-		guard_free(&line);
+		guard_free(line);
 		line = get_next_line(data->fd);
 		if (!line)
 			break ;
@@ -57,13 +57,19 @@ t_bool	parse(t_string path, t_data *data)
 		printf("not valid map");
 		return (FALSE);
 	}
-	// printf("map validated\n");
-	// return (FALSE);
 	mlx_data_init(data);
-	if (!data->textures->east.mlx_img || !data->textures->west.mlx_img
-		|| !data->textures->north.mlx_img || !data->textures->south.mlx_img
+	if (!data->textures->east->mlx_img || !data->textures->west->mlx_img
+		|| !data->textures->north->mlx_img || !data->textures->south->mlx_img
 		|| !data->floor_color || !data->ceiling_color)
 	{
+		if (!data->textures->east->mlx_img)
+			printf("no east\n");
+		if (!data->textures->west->mlx_img)
+			printf("no west | p = %p\n", data->textures->west->mlx_img);
+		if (!data->textures->north->mlx_img)
+			printf("no north\n");
+		if (!data->textures->south->mlx_img)
+			printf("no south\n");
 		printf("could not validate textures\n");
 		return (FALSE);
 	}

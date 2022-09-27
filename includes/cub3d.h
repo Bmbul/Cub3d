@@ -39,8 +39,7 @@ void		mlx_data_init(t_data *data);
 void		draw_map(t_data *data);
 
 // game_manager.c
-void		move_player(t_data *data);
-t_vector	move_dir(int key_code);
+void		move_player(int k_code, t_data *data);
 
 // fill_data.c
 t_bool		fill_map_list(t_string line, t_data *data);
@@ -54,7 +53,7 @@ void		free_data(t_data *data);
 void		start_game(t_data *data);
 
 // textures.c
-t_img		img_init(t_data *data, char *addr);
+t_img		*img_init(t_data *data, char *addr);
 void		textures_init(t_data *data);
 
 #endif

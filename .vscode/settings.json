@@ -12,6 +12,8 @@
 		"string": "c",
 		"string_view": "c",
 		"vector": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"utility": "c",
+		"__node_handle": "c"
 	}
 }

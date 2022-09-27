@@ -39,7 +39,7 @@ t_bool			has_extention(t_string path, t_string extention);
 
 // free.c
 void			ft_free(void *data);
-void			guard_free(char **str);
+void			guard_free(t_string str);
 void			free_array(t_text arr);
 
 // ft_split.c

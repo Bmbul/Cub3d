@@ -6,7 +6,6 @@ t_bool	is_movement_key(int k_code)
 			|| k_code == KEY_S || k_code == KEY_D)
 		|| k_code == LEFT_ARROW || k_code == RIGHT_ARROW)
 		return (FALSE);
-	
 	return (TRUE);
 }
 
@@ -24,13 +23,20 @@ void	add_listeners(int key_code, t_data *data)
 		exit_game(data);
 	if (is_movement_key(key_code))
 	{
-		move_player(data);
+		move_player(key_code, data);
 		draw_map(data);
 	}
 }
 
+void	setup_player(t_data *data)
+{
+	(void)data;
+	//data->camera_plane = new_vector(0, 0.66);
+}
+
 void	start_game(t_data	*data)
 {
+	setup_player(data);
 	mlx_hook(data->window, 2, 1L << 2, (void *)add_listeners, data);
 	mlx_hook(data->window, 17, 0, (void *)exit_game, data);
 	mlx_loop(data->mlx);
