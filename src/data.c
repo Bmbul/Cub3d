@@ -24,12 +24,12 @@ t_data	*data_init(void)
 	data->mlx = NULL;
 	data->window = NULL;
 	data->textures = NULL;
-	data->texture_paths = malloc(sizeof(t_text));
 	data->input_dict = new_dict();
 	data->map_list = new_list();
 	data->map_height = 0;
 	data->map_width = 0;
-	//data->dir = setup_directions();
+	data->color_strings = NULL;
+	//data->player = malloc(sizeof(t_player));
 	return (data);
 }
 

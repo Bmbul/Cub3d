@@ -56,4 +56,7 @@ void		start_game(t_data *data);
 t_img		*img_init(t_data *data, char *addr);
 void		textures_init(t_data *data);
 
+// drawer.c
+void		draw(t_data *data);
+
 #endif
