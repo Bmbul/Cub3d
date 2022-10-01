@@ -1,6 +1,5 @@
 # include "cub3d.h"
 
-
 static int	line_len(t_string line)
 {
 	int	len;

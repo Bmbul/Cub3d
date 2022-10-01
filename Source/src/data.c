@@ -1,6 +1,6 @@
 # include "cub3d.h"
 
-t_direction	setup_directions()
+t_direction	setup_directions(void)
 {
 	t_direction	direction;
 
@@ -41,7 +41,6 @@ void	mlx_data_init(t_data *data)
 	data->mlx = mlx_init();
 	data->window = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	textures_init(data);
-
 	data->frame.img_ptr = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->frame.data_addr = mlx_get_data_addr(data->frame.img_ptr,
 			&bits_per_pixel, &size_line, &endian);

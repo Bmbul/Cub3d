@@ -17,5 +17,5 @@ int	main(int argc, t_string *argv)
 		free_data(data);
 		print_error_and_exit("BAD map! Try better one!!!");
 	}
-	start_game(data);
+	//start_game(data);
 }
