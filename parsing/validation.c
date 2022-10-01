@@ -15,7 +15,7 @@ t_bool	validate_arguments(t_data *data)
 {
 	t_node	*current;
 
-	if (data->input_dict->count != 6)
+	if (data->input_dict->count < 6)
 		return (FALSE);
 	current = data->input_dict->head;
 	while (current)
@@ -43,7 +43,6 @@ t_bool	validate_texture_paths(t_data *data)
 	i = -1;
 	while (++i < TEXTURES_COUNT)
 	{
-		//printf("validating %d\n", i);
 		if (!has_extention(data->texture_paths[i], "xpm"))
 		{
 			printf("Does not have right extention: %s\n", data->texture_paths[i]);
@@ -93,7 +92,10 @@ t_bool	validate_map(t_data *data)
 				if (not_surrounded_by_walls(data, row, col))
 					return (FALSE);
 			if (contains("NEWS", data->map[row][col]))
+			{
+				setup_player(data, row, col);
 				start_count++;
+			}
 			//printf("validated map[%d][%d] = %c\n", row, col, data->map[row][col]);
 		}
 	}

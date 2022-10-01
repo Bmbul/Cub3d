@@ -39,8 +39,9 @@ void	add_node(t_list *list, t_lnode *node)
 
 void	free_lnode(t_lnode *node)
 {
-	guard_free(&node->value);
-	ft_free(node);
+	if (node->value)
+		free(node->value);
+	free(node);
 }
 
 void	remove_node(t_list *list)

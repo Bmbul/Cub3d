@@ -41,7 +41,7 @@ void	fill_map(t_string line, t_data *data)
 	data->map_height = data->map_list->count;
 	if (data->map_width == 0)
 		return ;
-	data->map = malloc(sizeof(char *) * (data->map_height + 1));
+	data->map = malloc(sizeof(t_string) * (data->map_height + 1));
 	current = data->map_list->head;
 	while (++i < data->map_height)
 	{

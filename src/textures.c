@@ -1,12 +1,13 @@
 #include "cub3d.h"
 
-t_img	img_init(t_data *data, char *addr)
+t_texture	*img_init(t_data *data, char *addr)
 {
-	t_img	img;
+	t_texture	*img;
 
-	img.addr = addr;
-	img.mlx_img = mlx_xpm_file_to_image(data->mlx, img.addr,
-			&img.width, &img.height);
+	img = malloc(sizeof(t_texture));
+	img->addr = addr;
+	img->mlx_img = mlx_xpm_file_to_image(data->mlx, img->addr,
+			&img->width, &img->height);
 	return (img);
 }
 
