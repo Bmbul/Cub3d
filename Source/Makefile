@@ -67,7 +67,7 @@ FLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -Iincludes
 
-LINKER = -l mlx -framework AppKit -framework OpenGl
+LINKER = -l mlx -l m -framework AppKit -framework OpenGl
 
 SRCS = $(wildcard */*.c)
 
@@ -79,7 +79,7 @@ all: $(NAME) clean
 # 	./${NAME} ${MAP}
 
 $(NAME): $(SRC_OBJS)
-	@$(CC) $(FLAGS) $(SRC_OBJS) $(INCLUDES) $(LINKER) -o $(NAME)
+	@$(CC) $(FLAGS) -L ../mlx_macos $(SRC_OBJS) $(INCLUDES) $(LINKER) -o $(NAME)
 
 */%.o: */%.c
 	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@

@@ -97,7 +97,7 @@ void	verLine(t_data *data, int i, int draw_start, int draw_end, t_color color)
 	{
 		*(unsigned int*)(data->frame.data_addr + \
 		(draw_start * data->frame.size_line + i * (data->frame.bits_per_pixel / 8))) \
-		= 0xFF0000;
+		= 0xFFFFFF;
 		draw_start++;
 	}
 }
