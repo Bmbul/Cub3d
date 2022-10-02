@@ -8,11 +8,7 @@
 # include "cub3d.h"
 
 // color.c
-int				get_color(unsigned char t, unsigned char r,
-					unsigned char g, unsigned char b);
-// t_color		new_color(unsigned char red,
-// 				unsigned char green, unsigned char blue);
-
+int				get_color(t_color color);
 t_color			*new_color(t_string	input_color);
 void			print_color(t_color *color, t_string name);
 

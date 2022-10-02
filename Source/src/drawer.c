@@ -14,6 +14,7 @@ void	draw(t_data *data)
 	int			side;
 
 	i = -1;
+	mlx_clear_window(data->mlx, data->window);
 	while (++i < WIN_WIDTH)
 	{
 		hit = 0;
@@ -84,7 +85,9 @@ void	draw(t_data *data)
 		color.red = 255;
 		color.green = 0;
 		color.blue = 0;
-		verLine(data, i, drawStart, drawEnd, color); // xz
+		if (side == 1)
+			color.red = color.red / 2;
+		verLine(data, i, drawStart, drawEnd, color);
 	}
 	mlx_put_image_to_window(data->mlx, data->window,
 		data->frame.img_ptr, 0, 0);
@@ -97,7 +100,7 @@ void	verLine(t_data *data, int i, int draw_start, int draw_end, t_color color)
 	{
 		*(unsigned int*)(data->frame.data_addr + \
 		(draw_start * data->frame.size_line + i * (data->frame.bits_per_pixel / 8))) \
-		= 0xFFFFFF;
+		= get_color(color);
 		draw_start++;
 	}
 }

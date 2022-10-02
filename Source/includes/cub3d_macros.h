@@ -2,9 +2,10 @@
 # define CUB3D_MACROS_H
 
 //  GAME
-# define WIN_WIDTH		640
-# define WIN_HEIGHT		480
-# define SENSITIVITY	1
+# define WIN_WIDTH			640
+# define WIN_HEIGHT			480
+# define SENSITIVITY		1
+# define MOVEMENT_SPEED		0.1
 
 // boolean
 # define TRUE				1

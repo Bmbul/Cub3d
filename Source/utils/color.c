@@ -45,8 +45,7 @@ void	print_color(t_color *color, t_string name)
 // 	return (new_color);
 // }
 
-int	get_color(unsigned char t, unsigned char r,
-	unsigned char g, unsigned char b)
+int	get_color(t_color color)
 {
-	return (*(int *)(unsigned char [4]){b, g, r, t});
+	return (*(int *)(unsigned char [4]){color.blue, color.green, color.red, 0});
 }

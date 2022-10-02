@@ -2,7 +2,6 @@
 # define VECTOR_H
 
 typedef struct s_vector		t_vector;
-typedef struct s_direction	t_direction;
 typedef struct s_tuple		t_tuple;
 
 struct s_vector
@@ -15,14 +14,6 @@ struct s_tuple
 {
 	int	x;
 	int	y;
-};
-
-struct s_direction
-{
-	t_vector	up;
-	t_vector	down;
-	t_vector	right;
-	t_vector	left;
 };
 
 t_tuple		new_tuple(int x, int y);
