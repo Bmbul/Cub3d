@@ -44,9 +44,11 @@ void	setup_player(t_data *data, int row, int col)
 
 void	start_game(t_data	*data)
 {
+	// while (data->textures->east.data_addr[++idx])
+	// 	printf("texture[%d]: %d\n", idx, data->textures->east.data_addr[idx]);
 	printf("player pos before: %f %f\n", data->player.pos.x, data->player.pos.y);
 	draw(data);
-	mlx_hook(data->window, 2, 1L << 2, (void *)add_listeners, data);
+	mlx_hook(data->window, 2, 0, (void *)add_listeners, data);
 	mlx_hook(data->window, 17, 0, (void *)exit_game, data);
 	mlx_loop(data->mlx);
 }

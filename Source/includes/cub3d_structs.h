@@ -19,6 +19,7 @@ struct s_player
 
 struct s_img
 {
+	t_tuple		size;
 	int			endian;
 	void		*img_ptr;
 	int			size_line;
@@ -63,10 +64,10 @@ struct s_texture
 
 struct s_textures
 {
-	t_texture	*north;
-	t_texture	*east;
-	t_texture	*west;
-	t_texture	*south;
+	t_img	north;
+	t_img	east;
+	t_img	west;
+	t_img	south;
 };
 
 struct s_color

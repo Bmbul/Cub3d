@@ -63,17 +63,17 @@ t_bool	parse(t_string path, t_data *data)
 	//while (++i < 4)
 	//	printf("texture[%d] = %s\n", i, data->texture_paths[i]);
 	mlx_data_init(data);
-	if (!data->textures->east->mlx_img || !data->textures->west->mlx_img
-		|| !data->textures->north->mlx_img || !data->textures->south->mlx_img
+	if (!data->textures->east.img_ptr || !data->textures->west.img_ptr
+		|| !data->textures->north.img_ptr || !data->textures->south.img_ptr
 		|| !data->floor_color || !data->ceiling_color)
 	{
-		if (!data->textures->east->mlx_img)
+		if (!data->textures->east.img_ptr)
 			printf("no east\n");
-		if (!data->textures->west->mlx_img)
-			printf("no west | p = %p\n", data->textures->west->mlx_img);
-		if (!data->textures->north->mlx_img)
+		if (!data->textures->west.img_ptr)
+			printf("no west | p = %p\n", data->textures->west.img_ptr);
+		if (!data->textures->north.img_ptr)
 			printf("no north\n");
-		if (!data->textures->south->mlx_img)
+		if (!data->textures->south.img_ptr)
 			printf("no south\n");
 		printf("could not validate textures\n");
 		return (FALSE);

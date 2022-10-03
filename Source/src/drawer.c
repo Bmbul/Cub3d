@@ -89,8 +89,6 @@ void	draw(t_data *data)
 		vertical_line(data, i, drawStart, drawEnd, color);
 	}
 	mlx_put_image_to_window(data->mlx, data->window,
-		data->black_frame.img_ptr, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->window,
 		data->frame.img_ptr, 0, 0);
 }
 
@@ -98,20 +96,24 @@ void	vertical_line(t_data *data, int i, int draw_start,
 						int draw_end, t_color color)
 {
 	int	col;
+	int	color_hex;
 
 	col = -1;
 	while (++col < WIN_HEIGHT)
 	{
 		if (col >= draw_start && col <= draw_end)
-			*(unsigned int *)(data->frame.data_addr
-					+ (col * data->frame.size_line + i
-						* (data->frame.bits_per_pixel / 8)))
-				= get_color(color);
+		{
+			// color.green += col;
+			color_hex = get_color(color);
+		}
+		else if (col > WIN_HEIGHT / 2)
+			color_hex = get_color(*(data->floor_color));
 		else
-			*(unsigned int *)(data->frame.data_addr
-					+ (col * data->frame.size_line + i
-						* (data->frame.bits_per_pixel / 8)))
-				= 0;
+			color_hex = get_color(*(data->ceiling_color));
+		*(unsigned int *)(data->frame.data_addr
+				+ (col * data->frame.size_line + i
+					* (data->frame.bits_per_pixel / 8)))
+			= color_hex;
 	}
 }
 
@@ -128,7 +130,7 @@ void	fill_black_frame(t_data *data)
 		{
 			*(unsigned int *)(data->black_frame.data_addr + (i
 						* data->black_frame.size_line + j
-						* (data->black_frame.bits_per_pixel / 8))) = 0xffffff;
+						* (data->black_frame.bits_per_pixel / 8))) = 0x025215;
 		}
 	}
 }
