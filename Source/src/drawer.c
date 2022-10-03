@@ -14,7 +14,6 @@ void	draw(t_data *data)
 	int			side;
 
 	i = -1;
-	mlx_clear_window(data->mlx, data->window);
 	while (++i < WIN_WIDTH)
 	{
 		hit = 0;
@@ -87,20 +86,49 @@ void	draw(t_data *data)
 		color.blue = 0;
 		if (side == 1)
 			color.red = color.red / 2;
-		verLine(data, i, drawStart, drawEnd, color);
+		vertical_line(data, i, drawStart, drawEnd, color);
 	}
+	mlx_put_image_to_window(data->mlx, data->window,
+		data->black_frame.img_ptr, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->window,
 		data->frame.img_ptr, 0, 0);
 }
 
-void	verLine(t_data *data, int i, int draw_start, int draw_end, t_color color)
+void	vertical_line(t_data *data, int i, int draw_start,
+						int draw_end, t_color color)
 {
-	(void) color;
-	while (draw_start <= draw_end)
+	int	col;
+
+	col = -1;
+	while (++col < WIN_HEIGHT)
 	{
-		*(unsigned int*)(data->frame.data_addr + \
-		(draw_start * data->frame.size_line + i * (data->frame.bits_per_pixel / 8))) \
-		= get_color(color);
-		draw_start++;
+		if (col >= draw_start && col <= draw_end)
+			*(unsigned int *)(data->frame.data_addr
+					+ (col * data->frame.size_line + i
+						* (data->frame.bits_per_pixel / 8)))
+				= get_color(color);
+		else
+			*(unsigned int *)(data->frame.data_addr
+					+ (col * data->frame.size_line + i
+						* (data->frame.bits_per_pixel / 8)))
+				= 0;
+	}
+}
+
+void	fill_black_frame(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < WIN_HEIGHT)
+	{
+		j = -1;
+		while (++j < WIN_WIDTH)
+		{
+			*(unsigned int *)(data->black_frame.data_addr + (i
+						* data->black_frame.size_line + j
+						* (data->black_frame.bits_per_pixel / 8))) = 0xffffff;
+		}
 	}
 }

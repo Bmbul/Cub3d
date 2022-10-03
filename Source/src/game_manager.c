@@ -3,8 +3,8 @@
 t_bool	is_movement_key(int k_code)
 {
 	if (!(k_code == KEY_W || k_code == KEY_A
-			|| k_code == KEY_S || k_code == KEY_D)
-		|| k_code == LEFT_ARROW || k_code == RIGHT_ARROW)
+			|| k_code == KEY_S || k_code == KEY_D
+			|| k_code == LEFT_ARROW || k_code == RIGHT_ARROW))
 		return (FALSE);
 	return (TRUE);
 }
@@ -12,8 +12,8 @@ t_bool	is_movement_key(int k_code)
 void	exit_game(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->window);
-	free_data(data);
 	mlx_destroy_window(data->mlx, data->window);
+	free_data(data);
 	exit(0);
 }
 

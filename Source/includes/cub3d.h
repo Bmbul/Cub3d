@@ -62,10 +62,12 @@ void		free_data(t_data *data);
 void		start_game(t_data *data);
 
 // textures.c
-t_texture		*img_init(t_data *data, char *addr);
+t_texture	*img_init(t_data *data, char *addr);
 void		textures_init(t_data *data);
 
 // drawer.c
+
 void		draw(t_data *data);
-void		verLine(t_data *data, int i, int drawStart, int drawEnd, t_color color);
+void		fill_black_frame(t_data *data);
+void		vertical_line(t_data *data, int i, int drawStart, int drawEnd, t_color color);
 #endif

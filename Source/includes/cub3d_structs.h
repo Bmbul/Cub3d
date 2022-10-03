@@ -31,6 +31,7 @@ struct s_data
 	void		*mlx;
 	void		*window;
 	t_img		frame;
+	t_img		black_frame;
 	int			fd;
 	t_text		map;
 	int			map_width;
