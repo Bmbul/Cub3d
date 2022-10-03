@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_bool	fill_map_list(t_string line, t_data *data)
 {

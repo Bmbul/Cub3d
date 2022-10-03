@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 size_t	ft_strlcpy(char *dst, t_string const src, size_t destsize)
 {
@@ -20,11 +20,9 @@ size_t	ft_strlcpy(char *dst, t_string const src, size_t destsize)
 
 char	*ft_substr(t_string const s, unsigned int start, size_t len)
 {
-	unsigned int	i;
 	char			*str;
 	size_t			total_len;
 
-	i = 0;
 	if (start > ft_strlen(s))
 		total_len = 0;
 	else if (ft_strlen(s) - start > len)

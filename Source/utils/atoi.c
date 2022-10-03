@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
 unsigned char	basic_atouc(t_string str)
 {

@@ -1,12 +1,10 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_color	*new_color(t_string	input_color)
 {
 	t_color	*color;
 	t_text	colors;
-	int		i;
 
-	i = -1;
 	colors = ft_split(input_color, ',');
 	if (text_len(colors) != 3 || !(is_unsigned_char(colors[0])
 			&& is_unsigned_char(colors[1]) && is_unsigned_char(colors[2])))

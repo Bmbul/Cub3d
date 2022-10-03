@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_bool	is_attribute(t_string str)
 {

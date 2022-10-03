@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
 void	exit_game(t_data *data)
 {
@@ -76,9 +76,9 @@ void	start_game(t_data *data)
 	// 	printf("texture[%d]: %d\n", idx, data->textures->east.data_addr[idx]);
 	printf("player pos before: %f %f\n", data->player.pos.x, data->player.pos.y);
 	draw(data);
-	mlx_hook(data->window, 2, 0, (void *)key_press, data);
-	mlx_hook(data->window, 3, 0, (void *)key_release, data);
-	mlx_hook(data->window, 17, 0, (void *)exit_game, data);
+	mlx_hook(data->window, 2, 1L << 0, (void *)key_press, data);
+	mlx_hook(data->window, 3, 1L << 1, (void *)key_release, data);
+	mlx_hook(data->window, 17, 1L << 0, (void *)exit_game, data);
 	mlx_loop_hook(data->mlx, (void *)update, data);
 	mlx_loop(data->mlx);
 }

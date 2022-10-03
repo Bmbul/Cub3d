@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
 static void	print_lnode(t_lnode *node)
 {

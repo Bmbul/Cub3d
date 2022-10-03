@@ -1,13 +1,11 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 void	read_from_input(t_data *data)
 {
 	t_string	line;
-	t_text		splitted;
 	int			stop;
 
 	stop = 0;
-	splitted = NULL;
 	line = NULL;
 	while (!stop)
 	{

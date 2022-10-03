@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
 //	to run program
 //	gcc -Wall -Wextra -Werror */*.c -I includes -l mlx -framework AppKit -framework OpenGL

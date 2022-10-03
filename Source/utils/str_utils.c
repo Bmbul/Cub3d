@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 size_t	ft_strlen(t_string const s)
 {

@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_node	*find_node_with_key(t_dict *list, char *key)
 {

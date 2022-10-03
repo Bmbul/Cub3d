@@ -1,4 +1,4 @@
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_bool	validate_input_file(t_string input)
 {
