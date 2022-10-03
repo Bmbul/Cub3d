@@ -18,6 +18,7 @@ t_data	*data_init(void)
 	data->map_height = 0;
 	data->map_width = 0;
 	data->color_strings = NULL;
+	data->key_map = (t_key_map){0};
 	return (data);
 }
 

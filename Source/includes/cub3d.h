@@ -11,7 +11,6 @@
 # include <math.h>
 # include <unistd.h>
 # include <fcntl.h>
-//# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
@@ -47,8 +46,15 @@ void		mlx_data_init(t_data *data);
 void		draw_map(t_data *data);
 
 // game_manager.c
-void		move_player(int k_code, t_data *data);
+void		start_game(t_data	*data);
 void		setup_player(t_data *data, int row, int col);
+
+// game_manager_utils.c
+t_bool		is_movement_key(int k_code);
+t_bool		should_move(t_data *data);
+
+// player_movement.c
+void		move_player(t_data *data);
 
 // fill_data.c
 t_bool		fill_map_list(t_string line, t_data *data);
@@ -58,11 +64,8 @@ t_bool		fill_attribute(t_string line, t_data *data);
 // free_data.c
 void		free_data(t_data *data);
 
-// game_manager.c
-void		start_game(t_data *data);
-
 // textures.c
-t_img	img_init(t_data *data, char *addr);
+t_img		img_init(t_data *data, char *addr);
 void		textures_init(t_data *data);
 
 // drawer.c

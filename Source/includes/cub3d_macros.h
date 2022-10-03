@@ -5,7 +5,7 @@
 # define WIN_WIDTH			960
 # define WIN_HEIGHT			600
 # define SENSITIVITY		0.05
-# define MOVEMENT_SPEED		0.5
+# define MOVEMENT_SPEED		0.1
 
 // boolean
 # define TRUE				1
@@ -39,6 +39,12 @@
 # define _EAST				1
 # define _WEST				2
 # define _SOUTH				3
+
+// gexavari_directions
+# define FORWARD			1
+# define BACKWARDS			-1
+# define LEFT				-1
+# define RIGHT				1
 
 // keys
 # define KEY_ESC 			53

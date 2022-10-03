@@ -6,10 +6,12 @@ typedef char *				t_string;
 typedef char **				t_text;
 typedef struct s_textures	t_textures;
 typedef struct s_texture	t_texture;
-typedef struct s_data		t_data;
 typedef struct s_color		t_color;
 typedef struct s_player		t_player;
 typedef struct s_img		t_img;
+typedef struct s_key_map	t_key_map;
+typedef struct s_data		t_data;
+typedef struct s_mov_inp	t_mov_inp;
 
 struct s_player
 {
@@ -25,27 +27,6 @@ struct s_img
 	int			size_line;
 	char		*data_addr;
 	int			bits_per_pixel;
-};
-
-struct s_data
-{
-	void		*mlx;
-	void		*window;
-	t_img		frame;
-	t_img		black_frame;
-	int			fd;
-	t_text		map;
-	int			map_width;
-	int			map_height;
-	t_color		*floor_color;
-	t_color		*ceiling_color;
-	t_string	texture_paths[4];
-	t_text		color_strings;
-	t_dict		*input_dict;
-	t_textures	*textures;
-	t_list		*map_list;
-	t_player	player;
-	t_vector	camera_plane;
 };
 
 struct s_mlx
@@ -75,6 +56,46 @@ struct s_color
 	unsigned char	red;
 	unsigned char	green;
 	unsigned char	blue;
+};
+
+struct s_key_map
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	left;
+	int	right;
+};
+
+struct s_mov_inp
+{
+	int	x;
+	int	y;
+	int	rot;
+};
+
+struct s_data
+{
+	void		*mlx;
+	void		*window;
+	t_img		frame;
+	t_img		black_frame;
+	int			fd;
+	t_text		map;
+	int			map_width;
+	int			map_height;
+	t_color		*floor_color;
+	t_color		*ceiling_color;
+	t_string	texture_paths[4];
+	t_text		color_strings;
+	t_dict		*input_dict;
+	t_textures	*textures;
+	t_list		*map_list;
+	t_player	player;
+	t_vector	camera_plane;
+	t_key_map	key_map;
+	t_mov_inp	mov_input;
 };
 
 #endif

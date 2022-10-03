@@ -59,22 +59,12 @@ void	rotate(t_data *data, int dir)
 		+ old_plane.y * cos(SENSITIVITY * dir);
 }
 
-void	move_player(int k_code, t_data *data)
+void	move_player(t_data *data)
 {
-	if (k_code == KEY_W || k_code == KEY_A
-		|| k_code == KEY_S || k_code == KEY_D)
-	{
-		if (k_code == KEY_W)
-			move_forward(data, 1);
-		if (k_code == KEY_A)
-			move_side(data, -1);
-		if (k_code == KEY_S)
-			move_forward(data, -1);
-		if (k_code == KEY_D)
-			move_side(data, 1);
-	}
-	if (k_code == RIGHT_ARROW)
-		rotate(data, 1);
-	else if (k_code == LEFT_ARROW)
-		rotate(data, -1);
+	if (data->mov_input.x)
+		move_side(data, data->mov_input.x);
+	if (data->mov_input.y)
+		move_forward(data, data->mov_input.y);
+	if (data->mov_input.rot)
+		rotate(data, data->mov_input.rot);
 }
