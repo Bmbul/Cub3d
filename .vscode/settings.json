@@ -13,12 +13,7 @@
 		"string_view": "c",
 		"vector": "c",
 		"mlx.h": "c",
-<<<<<<< Updated upstream
-		"utility": "c",
-		"__node_handle": "c"
-=======
 		"chrono": "c",
 		"unordered_map": "c"
->>>>>>> Stashed changes
 	}
 }
