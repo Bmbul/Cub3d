@@ -74,7 +74,7 @@ void	draw(t_data *data)
 		lineHeight = (int)(WIN_HEIGHT / perpWallDist);
 		int	drawStart;
 		drawStart = -lineHeight / 2;
-		int sus = -lineHeight / 2 + WIN_HEIGHT / 2;
+		int ceiling_size = -lineHeight / 2 + WIN_HEIGHT / 2;
 		if (drawStart < 0)
 			drawStart = 0;
 		int	drawEnd;
@@ -108,22 +108,24 @@ void	draw(t_data *data)
 			texPos += 8;
 		if(side == 1 && ray.y > 0)
 			texPos += 12;
-		vertical_line(data, i, drawStart%WIN_HEIGHT, drawEnd%WIN_HEIGHT, texX, texPos, step, sus);
+		vertical_line(data, i, drawStart%WIN_HEIGHT, drawEnd%WIN_HEIGHT, texX, texPos, step, ceiling_size);
 	}
+	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->window,
 		data->frame.img_ptr, 0, 0);
 }
 
 void	vertical_line(t_data *data, int i, int draw_start,
-				int draw_end, int texX, double texPos, double step, int sus)
+				int draw_end, int texX, double texPos, double step, int ceiling_size)
 {
 	int				col;
+	int				texY;
 	unsigned int	color_hex;
 
 	col = -1;
 	while (++col < WIN_HEIGHT)
 	{
-		int texY = (int)texPos & (64 - 1);
+		texY = (int)texPos & (64 - 1);
 		texPos += step;
 		if (col >= draw_start && col <= draw_end)
 			color_hex = data->textures->north.texture[texY + 64 * texX];
@@ -137,7 +139,7 @@ void	vertical_line(t_data *data, int i, int draw_start,
 			= color_hex;
 	}
 	col = -1;
-	while (++col < sus)
+	while (++col < ceiling_size)
 		*(unsigned int *)(data->frame.data_addr
 				+ (col * data->frame.size_line + i
 					* (data->frame.bits_per_pixel / 8)))
@@ -159,5 +161,39 @@ void	fill_black_frame(t_data *data)
 						* data->black_frame.size_line + j
 						* (data->black_frame.bits_per_pixel / 8))) = 0x025215;
 		}
+	}
+}
+
+void	draw_minimap(t_data *data)
+{
+	int				idx;
+	int				jdx;
+	int				m;
+	int				n;
+	unsigned int	color;
+
+	idx = WIN_HEIGHT - MAP_HEIGHT - MAP_OFFSET;
+	while (idx < WIN_HEIGHT - MAP_OFFSET)
+	{
+		jdx = MAP_OFFSET;
+		m = idx - (WIN_HEIGHT - MAP_HEIGHT - MAP_OFFSET);
+		m = (m - m % MINI_SCALE) / MINI_SCALE;
+		while (jdx < MAP_OFFSET + MAP_WIDTH)
+		{
+			n = jdx - MAP_OFFSET;
+			n = (n - n % MINI_SCALE) / MINI_SCALE;
+			if (n == (int)data->player.pos.y && m == (int)data->player.pos.x)
+				color = 0xFF0000;
+			else if (data->map[m][n] == '1')
+				color = 0xDEDEDE;
+			else if (data->map[m][n] == '0')
+				color = 0x433BDE;
+			*(unsigned int *)(data->frame.data_addr
+					+ (idx * data->frame.size_line + jdx
+						* (data->frame.bits_per_pixel / 8)))
+				= color;
+			jdx++;
+		}
+		idx++;
 	}
 }

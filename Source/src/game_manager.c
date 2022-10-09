@@ -70,7 +70,7 @@ void	update(t_data *data)
 	}
 }
 
-static unsigned int	*xz(t_img img)
+static unsigned int	*get_img_colors(t_img img)
 {
 	int				i;
 	int				j;
@@ -91,10 +91,10 @@ static unsigned int	*xz(t_img img)
 
 void	start_game(t_data *data)
 {
-	data->textures->north.texture = xz(data->textures->north);
-	data->textures->east.texture = xz(data->textures->east);
-	data->textures->west.texture = xz(data->textures->west);
-	data->textures->south.texture = xz(data->textures->south);
+	data->textures->north.texture = get_img_colors(data->textures->north);
+	data->textures->east.texture = get_img_colors(data->textures->east);
+	data->textures->west.texture = get_img_colors(data->textures->west);
+	data->textures->south.texture = get_img_colors(data->textures->south);
 	draw(data);
 	mlx_hook(data->window, 2, 1L << 0, (void *)key_press, data);
 	mlx_hook(data->window, 3, 1L << 1, (void *)key_release, data);

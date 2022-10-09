@@ -44,6 +44,7 @@ void		mlx_data_init(t_data *data);
 
 // drawer.c
 void		draw_map(t_data *data);
+void		draw_minimap(t_data *data);
 
 // game_manager.c
 void		start_game(t_data	*data);
@@ -73,5 +74,5 @@ unsigned int	get_img_color(t_img img, int x, int y);
 
 void		draw(t_data *data);
 void		fill_black_frame(t_data *data);
-void		vertical_line(t_data *data, int i, int drawStart, int drawEnd, int texX, double texPos, double step, int sus);
+void		vertical_line(t_data *data, int i, int drawStart, int drawEnd, int texX, double texPos, double step, int ceiling_size);
 #endif

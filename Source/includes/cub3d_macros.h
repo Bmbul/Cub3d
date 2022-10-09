@@ -4,8 +4,14 @@
 //  GAME
 # define WIN_WIDTH			960
 # define WIN_HEIGHT			600
-# define SENSITIVITY		0.015
-# define MOVEMENT_SPEED		0.05
+# define SENSITIVITY		0.05
+# define MOVEMENT_SPEED		0.1
+
+// minimap
+# define MAP_WIDTH			144
+# define MAP_HEIGHT			144
+# define MAP_OFFSET			32
+# define MINI_SCALE			6
 
 // boolean
 # define TRUE				1
