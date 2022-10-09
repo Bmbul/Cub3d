@@ -27,6 +27,7 @@ struct s_img
 	int			size_line;
 	char		*data_addr;
 	int			bits_per_pixel;
+	unsigned int	*texture;
 };
 
 struct s_mlx

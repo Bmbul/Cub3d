@@ -5,7 +5,7 @@
 # define WIN_WIDTH			960
 # define WIN_HEIGHT			600
 # define SENSITIVITY		0.015
-# define MOVEMENT_SPEED		0.075
+# define MOVEMENT_SPEED		0.05
 
 // boolean
 # define TRUE				1

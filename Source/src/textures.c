@@ -20,3 +20,11 @@ void	textures_init(t_data *data)
 	data->textures->west = img_init(data, data->texture_paths[_WEST]);
 	data->textures->south = img_init(data, data->texture_paths[_SOUTH]);
 }
+
+unsigned int	get_img_color(t_img img, int x, int y)
+{
+	char	*dst;
+
+	dst = img.data_addr + (y * img.size_line + x * (img.bits_per_pixel / 8));
+	return (*(unsigned int*)dst);
+}

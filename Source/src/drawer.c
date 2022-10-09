@@ -67,45 +67,66 @@ void	draw(t_data *data)
 				hit = 1;
 		}
 		if (side == 0)
-			perpWallDist = (side_dist.x - delta_dist.x);
+			perpWallDist = side_dist.x - delta_dist.x;
 		else
-			perpWallDist = (side_dist.y - delta_dist.y);
+			perpWallDist = side_dist.y - delta_dist.y;
 		int	lineHeight;
 		lineHeight = (int)(WIN_HEIGHT / perpWallDist);
 		int	drawStart;
-		drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
+		drawStart = -lineHeight / 2;
+		int sus = -lineHeight / 2 + WIN_HEIGHT / 2;
 		if (drawStart < 0)
 			drawStart = 0;
 		int	drawEnd;
 		drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
 		if (drawEnd >= WIN_HEIGHT)
 			drawEnd = WIN_HEIGHT - 1;
-		t_color	color;
-		color.red = 255;
-		color.green = 0;
-		color.blue = 0;
-		if (side == 1)
-			color.red = color.red / 2;
-		vertical_line(data, i, drawStart, drawEnd, color);
+		double wallX;
+		if (side == 0)
+			wallX = data->player.pos.y + perpWallDist * ray.y;
+		else
+			wallX = data->player.pos.x + perpWallDist * ray.x;
+		wallX -= floor((wallX));
+
+		int	texWidth = 64;
+		int texHeight = 64;
+		int texX = (int)(wallX * (double)texWidth);
+		if(side == 0 && ray.x > 0)
+			texX = texWidth - texX - 1;
+		if(side == 0 && ray.x > 0)
+			texX = texWidth - texX - 1 + 64;
+		if(side == 1 && ray.y < 0)
+			texX = texWidth - texX - 1 + 128;
+		if(side == 1 && ray.y > 0)
+			texX = texWidth - texX - 1 + 192;
+
+		double step = 1.0 * texHeight / lineHeight;
+		double texPos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
+		if(side == 0 && ray.x > 0)
+			texPos += 4;
+		if(side == 1 && ray.y < 0)
+			texPos += 8;
+		if(side == 1 && ray.y > 0)
+			texPos += 12;
+		vertical_line(data, i, drawStart%WIN_HEIGHT, drawEnd%WIN_HEIGHT, texX, texPos, step, sus);
 	}
 	mlx_put_image_to_window(data->mlx, data->window,
 		data->frame.img_ptr, 0, 0);
 }
 
 void	vertical_line(t_data *data, int i, int draw_start,
-						int draw_end, t_color color)
+				int draw_end, int texX, double texPos, double step, int sus)
 {
-	int	col;
-	int	color_hex;
+	int				col;
+	unsigned int	color_hex;
 
 	col = -1;
 	while (++col < WIN_HEIGHT)
 	{
+		int texY = (int)texPos & (64 - 1);
+		texPos += step;
 		if (col >= draw_start && col <= draw_end)
-		{
-			// color.green += col;
-			color_hex = get_color(color);
-		}
+			color_hex = data->textures->north.texture[texY + 64 * texX];
 		else if (col > WIN_HEIGHT / 2)
 			color_hex = get_color(*(data->floor_color));
 		else
@@ -115,6 +136,12 @@ void	vertical_line(t_data *data, int i, int draw_start,
 					* (data->frame.bits_per_pixel / 8)))
 			= color_hex;
 	}
+	col = -1;
+	while (++col < sus)
+		*(unsigned int *)(data->frame.data_addr
+				+ (col * data->frame.size_line + i
+					* (data->frame.bits_per_pixel / 8)))
+			= get_color(*(data->ceiling_color));
 }
 
 void	fill_black_frame(t_data *data)
