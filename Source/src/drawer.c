@@ -63,7 +63,7 @@ void	draw(t_data *data)
 				map.y += step.y;
 				side = 1;
 			}
-			if (data->map[map.x][map.y] != '0')
+			if (data->map[map.x][map.y] == '1')
 				hit = 1;
 		}
 		if (side == 0)
@@ -144,24 +144,6 @@ void	vertical_line(t_data *data, int i, int draw_start,
 				+ (col * data->frame.size_line + i
 					* (data->frame.bits_per_pixel / 8)))
 			= get_color(*(data->ceiling_color));
-}
-
-void	fill_black_frame(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < WIN_HEIGHT)
-	{
-		j = -1;
-		while (++j < WIN_WIDTH)
-		{
-			*(unsigned int *)(data->black_frame.data_addr + (i
-						* data->black_frame.size_line + j
-						* (data->black_frame.bits_per_pixel / 8))) = 0x025215;
-		}
-	}
 }
 
 void	draw_minimap(t_data *data)

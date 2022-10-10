@@ -21,12 +21,12 @@ struct s_player
 
 struct s_img
 {
-	t_tuple		size;
-	int			endian;
-	void		*img_ptr;
-	int			size_line;
-	char		*data_addr;
-	int			bits_per_pixel;
+	t_tuple			size;
+	int				endian;
+	void			*img_ptr;
+	int				size_line;
+	char			*data_addr;
+	int				bits_per_pixel;
 	unsigned int	*texture;
 };
 
@@ -81,7 +81,6 @@ struct s_data
 	void		*mlx;
 	void		*window;
 	t_img		frame;
-	t_img		black_frame;
 	int			fd;
 	t_text		map;
 	int			map_width;

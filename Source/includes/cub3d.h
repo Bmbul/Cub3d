@@ -54,6 +54,12 @@ void		setup_player(t_data *data, int row, int col);
 t_bool		is_movement_key(int k_code);
 t_bool		should_move(t_data *data);
 
+
+// game_events.c
+void		exit_game(t_data *data);
+void		key_press(int key_code, t_data *data);
+void		key_release(int key_code, t_data *data);
+
 // player_movement.c
 void		move_player(t_data *data);
 

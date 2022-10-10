@@ -31,11 +31,6 @@ void	mlx_data_init(t_data *data)
 	data->frame.data_addr = mlx_get_data_addr(data->frame.img_ptr,
 			&data->frame.bits_per_pixel,
 			&data->frame.size_line, &data->frame.endian);
-	data->black_frame.img_ptr = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	data->black_frame.data_addr = mlx_get_data_addr(data->black_frame.img_ptr,
-			&data->black_frame.bits_per_pixel,
-			&data->black_frame.size_line, &data->black_frame.endian);
-	fill_black_frame(data);
 }
 
 void	print_data(t_data *data)
