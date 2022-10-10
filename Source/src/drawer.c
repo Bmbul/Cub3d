@@ -102,12 +102,12 @@ void	draw(t_data *data)
 
 		double step = 1.0 * texHeight / lineHeight;
 		double texPos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
-		if(side == 0 && ray.x > 0)
-			texPos += 4;
-		if(side == 1 && ray.y < 0)
-			texPos += 8;
-		if(side == 1 && ray.y > 0)
-			texPos += 12;
+		// if(side == 0 && ray.x > 0)
+		// 	texPos += 4;
+		// if(side == 1 && ray.y < 0)
+		// 	texPos += 8;
+		// if(side == 1 && ray.y > 0)
+		// 	texPos += 12;
 		vertical_line(data, i, drawStart%WIN_HEIGHT, drawEnd%WIN_HEIGHT, texX, texPos, step, ceiling_size);
 	}
 	draw_minimap(data);

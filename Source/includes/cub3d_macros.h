@@ -23,8 +23,8 @@
 # define TEXTURES_COUNT		4
 
 // map
-# define MAP_CHARS			"01NEWS "
-# define MAP_CHARS_WN		"01NEWS \n"
+# define MAP_CHARS			"0123456789NEWS "
+# define MAP_CHARS_WN		"0123456789NEWS \n"
 # define WALL				'1'
 # define GROUND				'0'
 # define NORTH				'N'
