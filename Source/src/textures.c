@@ -9,7 +9,17 @@ t_img	img_init(t_data *data, char *addr)
 			&img.size.x, &img.size.y);
 	img.data_addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel,
 			&img.size_line, &img.endian);
+	img.texture = get_img_colors(img);
 	return (img);
+}
+
+void	sprites_init(t_data *data)
+{
+	data->sprites = malloc(sizeof(t_img *) * SPRITES_COUNT);
+	data->sprites[ENEMY_INDEX] = malloc(sizeof(t_img) * 3);
+	data->sprites[ENEMY_INDEX][0] = img_init(data, "textures/enemy0.xpm");
+	data->sprites[ENEMY_INDEX][1] = img_init(data, "textures/enemy1.xpm");
+	data->sprites[ENEMY_INDEX][2] = img_init(data, "textures/enemy2.xpm");
 }
 
 void	textures_init(t_data *data)
@@ -19,12 +29,5 @@ void	textures_init(t_data *data)
 	data->textures->east = img_init(data, data->texture_paths[_EAST]);
 	data->textures->west = img_init(data, data->texture_paths[_WEST]);
 	data->textures->south = img_init(data, data->texture_paths[_SOUTH]);
-}
-
-unsigned int	get_img_color(t_img img, int x, int y)
-{
-	char	*dst;
-
-	dst = img.data_addr + (y * img.size_line + x * (img.bits_per_pixel / 8));
-	return (*(unsigned int *)dst);
+	sprites_init(data);
 }

@@ -44,6 +44,7 @@ void		mlx_data_init(t_data *data);
 
 // drawer.c
 void		draw_map(t_data *data);
+void		draw_sprites(t_data *data);
 void		draw_minimap(t_data *data);
 
 // game_manager.c
@@ -53,7 +54,6 @@ void		setup_player(t_data *data, int row, int col);
 // game_manager_utils.c
 t_bool		is_movement_key(int k_code);
 t_bool		should_move(t_data *data);
-
 
 // game_events.c
 void		exit_game(t_data *data);
@@ -74,10 +74,8 @@ void		free_data(t_data *data);
 // textures.c
 t_img		img_init(t_data *data, char *addr);
 void		textures_init(t_data *data);
-unsigned int	get_img_color(t_img img, int x, int y);
 
 // drawer.c
-
 void		draw(t_data *data);
 void		fill_black_frame(t_data *data);
 void		vertical_line(t_data *data, int i, int drawStart, int drawEnd, int texX, double texPos, double step, int ceiling_size);

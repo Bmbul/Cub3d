@@ -30,3 +30,10 @@ void	free_list(t_list *list)
 		remove_node(list);
 	free(list);
 }
+
+void	free_list_nodes(t_list *list)
+{
+	printf("count = %d\n", list->count);
+	while (list->count > 0)
+		remove_node(list);
+}

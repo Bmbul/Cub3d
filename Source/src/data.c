@@ -15,6 +15,7 @@ t_data	*data_init(void)
 	data->textures = NULL;
 	data->input_dict = new_dict();
 	data->map_list = new_list();
+	data->drawing_sprites = new_list();
 	data->map_height = 0;
 	data->map_width = 0;
 	data->color_strings = NULL;

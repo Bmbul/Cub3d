@@ -25,31 +25,8 @@ void	update(t_data *data)
 	}
 }
 
-static unsigned int	*get_img_colors(t_img img)
-{
-	int				i;
-	int				j;
-	int				k;
-	unsigned int	*ptr;
-
-	ptr = malloc(sizeof(unsigned int) * 64 * 64);
-	i = -1;
-	while (++i < 64)
-	{
-		j = -1;
-		k = 64;
-		while (++j < 64 && --k > -1)
-			ptr[64 * k + i] = get_img_color(img, j, i);
-	}
-	return (ptr);
-}
-
 void	start_game(t_data *data)
 {
-	data->textures->north.texture = get_img_colors(data->textures->north);
-	data->textures->east.texture = get_img_colors(data->textures->east);
-	data->textures->west.texture = get_img_colors(data->textures->west);
-	data->textures->south.texture = get_img_colors(data->textures->south);
 	draw(data);
 	mlx_hook(data->window, 2, 1L << 0, (void *)key_press, data);
 	mlx_hook(data->window, 3, 1L << 1, (void *)key_release, data);

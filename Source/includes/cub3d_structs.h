@@ -96,6 +96,8 @@ struct s_data
 	t_vector	camera_plane;
 	t_key_map	key_map;
 	t_mov_inp	mov_input;
+	t_img		**sprites;
+	t_list		*drawing_sprites;
 };
 
 #endif

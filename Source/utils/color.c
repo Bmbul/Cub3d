@@ -30,3 +30,30 @@ int	get_color(t_color color)
 {
 	return (*(int *)(unsigned char [4]){color.blue, color.green, color.red, 0});
 }
+
+unsigned int	get_img_color(t_img img, int x, int y)
+{
+	char	*dst;
+
+	dst = img.data_addr + (y * img.size_line + x * (img.bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
+}
+
+unsigned int	*get_img_colors(t_img img)
+{
+	int				i;
+	int				j;
+	int				k;
+	unsigned int	*ptr;
+
+	ptr = malloc(sizeof(unsigned int) * 64 * 64);
+	i = -1;
+	while (++i < 64)
+	{
+		j = -1;
+		k = 64;
+		while (++j < 64 && --k > -1)
+			ptr[64 * k + i] = get_img_color(img, j, i);
+	}
+	return (ptr);
+}

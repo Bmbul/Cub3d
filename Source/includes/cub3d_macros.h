@@ -21,6 +21,8 @@
 
 // textures
 # define TEXTURES_COUNT		4
+# define SPRITES_COUNT		1
+# define ENEMY_INDEX		0
 
 // map
 # define MAP_CHARS			"0123456789NEWS "

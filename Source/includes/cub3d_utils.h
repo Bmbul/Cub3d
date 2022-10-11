@@ -9,7 +9,9 @@
 
 // color.c
 int				get_color(t_color color);
+unsigned int	*get_img_colors(t_img img);
 t_color			*new_color(t_string	input_color);
+unsigned int	get_img_color(t_img img, int x, int y);
 void			print_color(t_color *color, t_string name);
 
 // get_next_line
