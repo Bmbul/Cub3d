@@ -33,8 +33,12 @@ t_bool		validate_input_file(t_string input);
 t_bool		is_start_of_map(t_string str, int *return_value);
 t_bool		is_attribute(t_string str);
 
-// parsing
+// parsing.c
 t_bool		parse(t_string path, t_data *data);
+
+// filling_map_data.c
+int			get_sprites_count(t_list *list);
+void		get_map_sprites(t_data *data);
 
 // data.c
 void		print_data(t_data *data);
@@ -70,10 +74,6 @@ t_bool		fill_attribute(t_string line, t_data *data);
 
 // free_data.c
 void		free_data(t_data *data);
-
-// textures.c
-t_img		img_init(t_data *data, char *addr);
-void		textures_init(t_data *data);
 
 // drawer.c
 void		draw(t_data *data);
