@@ -14,6 +14,12 @@ typedef struct s_data			t_data;
 typedef struct s_mov_inp		t_mov_inp;
 typedef struct s_draw			t_draw;
 typedef struct s_sprite_info	t_sprite_info;
+typedef struct s_mouse			t_mouse;
+
+struct s_mouse {
+	int	hor;
+	int	ver;
+};
 
 struct s_draw {
 	int			hit;
@@ -119,6 +125,7 @@ struct s_data
 	t_textures		*textures;
 	t_list			*map_list;
 	t_player		player;
+	t_mouse			mouse;
 	t_vector		camera_plane;
 	t_key_map		key_map;
 	t_mov_inp		mov_input;

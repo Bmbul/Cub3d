@@ -28,6 +28,7 @@ void	update(t_data *data)
 void	start_game(t_data *data)
 {
 	draw(data);
+	mlx_hook(data->window, 6, 1L << 6, (void *)mouse_move, data);
 	mlx_hook(data->window, 2, 1L << 0, (void *)key_press, data);
 	mlx_hook(data->window, 3, 1L << 1, (void *)key_release, data);
 	mlx_hook(data->window, 17, 1L << 0, (void *)exit_game, data);

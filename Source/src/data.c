@@ -20,6 +20,7 @@ t_data	*data_init(void)
 	data->map_width = 0;
 	data->color_strings = NULL;
 	data->key_map = (t_key_map){0};
+	data->mouse = init_mouse();
 	return (data);
 }
 

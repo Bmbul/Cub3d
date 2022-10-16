@@ -293,7 +293,7 @@ void	draw_sprites(t_data *data)
 	}
     // sort_sprites(data);
 	i = -1;
-	printf("sprites count : %d\n", data->sprites_count);
+	// printf("sprites count : %d\n", data->sprites_count);
 	while (++i < data->sprites_count)
 	{
 		sprite_x = data->map_sprites[data->sprite_order[i]].pos.x

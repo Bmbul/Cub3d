@@ -65,6 +65,8 @@ void		key_release(int key_code, t_data *data);
 
 // player_movement.c
 void		move_player(t_data *data);
+void		rotate(t_data *data, int dir);
+
 
 // fill_data.c
 t_bool		fill_map_list(t_string line, t_data *data);
@@ -78,4 +80,8 @@ void		free_data(t_data *data);
 void		draw(t_data *data);
 void		fill_black_frame(t_data *data);
 void		vertical_line(t_data *data, int i, t_draw draw);
+
+// mouse.c
+t_mouse		init_mouse(void);
+void		mouse_move(int x, int y, t_data *data);
 #endif
