@@ -38,6 +38,17 @@ void	fill_map(t_string line, t_data *data)
 	if (!fill_map_list(line, data))
 		return ;
 	data->map_width = get_longest_line(data->map_list);
+	data->sprites_count = get_sprites_count(data->map_list);
+	printf("sprites count: %d\n", data->sprites_count);
+	get_map_sprites(data);
+	data->sprite_distance = malloc(sizeof(double) * data->sprites_count);
+	data->sprite_order = malloc(sizeof(int) * data->sprites_count);
+	int u  = -1;
+	while (++u < data->sprites_count)
+	{
+		printf("sprite[%d] = {[%d %d], with index %c}\n", u,
+			data->map_sprites[u].pos.x, data->map_sprites[u].pos.y, data->map_sprites[u].texture);
+	}
 	data->map_height = data->map_list->count;
 	if (data->map_width == 0)
 		return ;

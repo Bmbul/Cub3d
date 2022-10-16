@@ -17,7 +17,7 @@ void	sprites_init(t_data *data)
 {
 	data->sprites = malloc(sizeof(t_img *) * SPRITES_COUNT);
 	data->sprites[ENEMY_INDEX] = malloc(sizeof(t_img) * 3);
-	data->sprites[ENEMY_INDEX][0] = img_init(data, "textures/enemy0.xpm");
+	data->sprites[ENEMY_INDEX][0] = img_init(data, "textures/mossy.xpm");
 	data->sprites[ENEMY_INDEX][1] = img_init(data, "textures/enemy1.xpm");
 	data->sprites[ENEMY_INDEX][2] = img_init(data, "textures/enemy2.xpm");
 }
@@ -30,4 +30,13 @@ void	textures_init(t_data *data)
 	data->textures->west = img_init(data, data->texture_paths[_WEST]);
 	data->textures->south = img_init(data, data->texture_paths[_SOUTH]);
 	sprites_init(data);
+}
+
+t_sprite_info	new_sprite_info(int x, int y, int texture)
+{
+	t_sprite_info	sprite;
+
+	sprite.pos = new_tuple(x, y);
+	sprite.texture = texture;
+	return (sprite);
 }
