@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_tuple	new_tuple(int x, int y)
 {

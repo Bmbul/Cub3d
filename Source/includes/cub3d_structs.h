@@ -12,6 +12,24 @@ typedef struct s_img		t_img;
 typedef struct s_key_map	t_key_map;
 typedef struct s_data		t_data;
 typedef struct s_mov_inp	t_mov_inp;
+typedef struct s_draw		t_draw;
+
+struct s_draw {
+	int			hit;
+	t_vector	ray;
+	t_tuple		map;
+	t_vector	delta_dist;
+	t_vector	side_dist;
+	t_tuple		step;
+	int			side;
+	int			lineHeight;
+	int			ceiling_size;
+	int			texX;
+	int			drawStart;
+	int			drawEnd;
+	double		ratio;
+	double		texPos;
+};
 
 struct s_player
 {

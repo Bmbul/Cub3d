@@ -20,6 +20,8 @@
 # define ERROR_CODE			1
 
 // textures
+# define TEXT_WIDTH			64
+# define TEXT_HIGHT			64
 # define TEXTURES_COUNT		4
 # define SPRITES_COUNT		1
 # define ENEMY_INDEX		0

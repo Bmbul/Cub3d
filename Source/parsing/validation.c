@@ -45,7 +45,8 @@ t_bool	validate_texture_paths(t_data *data)
 	{
 		if (!has_extention(data->texture_paths[i], "xpm"))
 		{
-			printf("Does not have right extention: %s\n", data->texture_paths[i]);
+			printf("Does not have right extention: %s\n", \
+				data->texture_paths[i]);
 			return (FALSE);
 		}
 		fd = open(data->texture_paths[i], O_RDONLY);
@@ -96,7 +97,8 @@ t_bool	validate_map(t_data *data)
 				setup_player(data, row, col);
 				start_count++;
 			}
-			//printf("validated map[%d][%d] = %c\n", row, col, data->map[row][col]);
+			//printf("validated map[%d][%d] = %c\n", row, col,
+				// data->map[row][col]);
 		}
 	}
 	return (start_count == 1);

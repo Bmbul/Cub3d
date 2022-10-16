@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 t_vector	v_inverse(t_vector vector)
 {

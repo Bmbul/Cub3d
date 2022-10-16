@@ -1,7 +1,6 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-
 # ifdef __linux__
 #  include "../../mlx_linux/mlx.h"
 # else
@@ -78,5 +77,5 @@ void		textures_init(t_data *data);
 // drawer.c
 void		draw(t_data *data);
 void		fill_black_frame(t_data *data);
-void		vertical_line(t_data *data, int i, int drawStart, int drawEnd, int texX, double texPos, double step, int ceiling_size);
+void		vertical_line(t_data *data, int i, t_draw draw);
 #endif

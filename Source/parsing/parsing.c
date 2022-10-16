@@ -43,8 +43,6 @@ t_bool	parse(t_string path, t_data *data)
 	if (data->fd == -1)
 		print_error_and_exit("Could not open the input file!!");
 	read_from_input(data);
-	//print_data(data);
-	//print_map(data);
 	if (!validate_arguments(data))
 	{
 		print_error("Bad input arguments.");

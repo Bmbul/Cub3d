@@ -48,8 +48,6 @@ void	print_data(t_data *data)
 		printf("key: %s, value %s\n", current->key, current->value);
 		current = current->next;
 	}
-	//print_color(data->floor_color, "floor");
-	//print_color(data->ceiling_color, "ceiling");
 	reset_color(1);
 }
 
@@ -80,7 +78,8 @@ t_bool	add_to_data(t_node *data_node, t_data *data)
 	}
 	else
 	{
-		printf("wrong argument\nkey = %s, value = %s\n", data_node->key, data_node->value);
+		printf("wrong argument\nkey = %s, value = %s\n", \
+			data_node->key, data_node->value);
 		return (FALSE);
 	}
 	return (TRUE);
