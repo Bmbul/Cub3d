@@ -6,6 +6,7 @@
 # define WIN_HEIGHT			600
 # define SENSITIVITY		0.05
 # define MOVEMENT_SPEED		0.1
+# define ANIM_CHANGE_FRAME	50
 
 // minimap
 # define MAP_WIDTH			144
@@ -30,6 +31,7 @@
 # define MAP_CHARS			"0123456789NEWS "
 # define MAP_CHARS_WN		"0123456789NEWS \n"
 # define WALL				'1'
+# define ENEMY				'2'
 # define GROUND				'0'
 # define NORTH				'N'
 # define EAST				'E'

@@ -15,6 +15,7 @@ typedef struct s_mov_inp		t_mov_inp;
 typedef struct s_draw			t_draw;
 typedef struct s_sprite_info	t_sprite_info;
 typedef struct s_mouse			t_mouse;
+typedef struct s_anim_sprite	t_animated_sprite;
 
 struct s_mouse {
 	int	hor;
@@ -53,12 +54,6 @@ struct s_img
 	char			*data_addr;
 	int				bits_per_pixel;
 	unsigned int	*texture;
-};
-
-struct s_mlx
-{
-	void		*mlx;
-	void		*window;
 };
 
 struct s_texture
@@ -101,6 +96,15 @@ struct s_mov_inp
 	int	rot;
 };
 
+struct s_anim_sprite
+{
+	unsigned int	current_index;
+	unsigned int	current_frame;
+	unsigned int	frames_count;
+	unsigned int	sprites_count;
+	t_img			*sprites;
+};
+
 struct s_sprite_info
 {
 	t_tuple	pos;
@@ -109,32 +113,31 @@ struct s_sprite_info
 
 struct s_data
 {
-	void			*mlx;
-	void			*window;
-	t_img			frame;
-	int				fd;
-	t_text			map;
-	int				map_width;
-	int				map_height;
-	int				sprites_count;
-	t_color			*floor_color;
-	t_color			*ceiling_color;
-	t_string		texture_paths[4];
-	t_text			color_strings;
-	t_dict			*input_dict;
-	t_textures		*textures;
-	t_list			*map_list;
-	t_player		player;
-	t_mouse			mouse;
-	t_vector		camera_plane;
-	t_key_map		key_map;
-	t_mov_inp		mov_input;
-	t_img			**sprites;
-	t_list			*drawing_sprites;
-	t_sprite_info	*map_sprites;
-	int				*sprite_order;
-	double			*sprite_distance;
-	double			z_buffer[WIN_WIDTH];
+	void				*mlx;
+	void				*window;
+	t_img				frame;
+	int					fd;
+	t_text				map;
+	int					map_width;
+	int					map_height;
+	int					sprites_count;
+	t_color				*floor_color;
+	t_color				*ceiling_color;
+	t_string			texture_paths[4];
+	t_text				color_strings;
+	t_dict				*input_dict;
+	t_textures			*textures;
+	t_list				*map_list;
+	t_player			player;
+	t_mouse				mouse;
+	t_vector			camera_plane;
+	t_key_map			key_map;
+	t_mov_inp			mov_input;
+	t_animated_sprite	*a_sprites;
+	t_sprite_info		*map_sprites;
+	int					*sprite_order;
+	double				*sprite_distance;
+	double				z_buffer[WIN_WIDTH];
 };
 
 #endif

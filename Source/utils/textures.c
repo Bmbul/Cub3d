@@ -15,11 +15,18 @@ t_img	img_init(t_data *data, char *addr)
 
 void	sprites_init(t_data *data)
 {
-	data->sprites = malloc(sizeof(t_img *) * SPRITES_COUNT);
-	data->sprites[ENEMY_INDEX] = malloc(sizeof(t_img) * 3);
-	data->sprites[ENEMY_INDEX][0] = img_init(data, "textures/mossy.xpm");
-	data->sprites[ENEMY_INDEX][1] = img_init(data, "textures/enemy1.xpm");
-	data->sprites[ENEMY_INDEX][2] = img_init(data, "textures/enemy2.xpm");
+	data->a_sprites = malloc(sizeof(t_animated_sprite) * SPRITES_COUNT);
+	data->a_sprites[ENEMY_INDEX].sprites = malloc(sizeof(t_img) * 3);
+	data->a_sprites[ENEMY_INDEX].current_index = 0;
+	data->a_sprites[ENEMY_INDEX].current_frame = 0;
+	data->a_sprites[ENEMY_INDEX].sprites_count = 3;
+	data->a_sprites[ENEMY_INDEX].frames_count = ANIM_CHANGE_FRAME;
+	data->a_sprites[ENEMY_INDEX].sprites[0]
+		= img_init(data, "textures/enemy0.xpm");
+	data->a_sprites[ENEMY_INDEX].sprites[1]
+		= img_init(data, "textures/enemy1.xpm");
+	data->a_sprites[ENEMY_INDEX].sprites[2]
+		= img_init(data, "textures/enemy2.xpm");
 }
 
 void	textures_init(t_data *data)
@@ -39,4 +46,21 @@ t_sprite_info	new_sprite_info(int x, int y, int texture)
 	sprite.pos = new_tuple(x, y);
 	sprite.texture = texture;
 	return (sprite);
+}
+
+unsigned int	get_animated_sprite_color(char letter,
+	t_data *data, int x, int y)
+{
+	unsigned int		color;
+	t_animated_sprite	current_sprite;
+
+	if (letter == ENEMY)
+	{
+		current_sprite = data->a_sprites[ENEMY_INDEX];
+		color = get_img_color(current_sprite.sprites
+			[current_sprite.current_index], x, y);
+	}
+	else
+		color = 0;
+	return (color);
 }

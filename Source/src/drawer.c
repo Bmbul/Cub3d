@@ -99,8 +99,6 @@ void	init_side_hit(t_data *data, t_draw *draw)
 		}
 		if (data->map[draw->map.x][draw->map.y] == '1')
 			draw->hit = 1;
-		else if (!contains("0NEWS", data->map[draw->map.x][draw->map.y]))
-			add_node(data->drawing_sprites, new_lnode(ft_strdup("2")));
 	}
 }
 
@@ -186,10 +184,10 @@ void	draw(t_data *data)
 	t_draw	draw;
 
 	col = -1;
-	free_list_nodes(data->drawing_sprites);
 	while (++col < WIN_WIDTH)
 	{
 		draw = init_draw(data, col);
+		data->z_buffer[col] = perpWallDist(draw);
 		vertical_line(data, col, draw);
 	}
 	draw_sprites(data);
@@ -235,35 +233,24 @@ void	vertical_line(t_data *data, int col, t_draw draw)
 	draw_ceiling(data, draw, col);
 }
 
-// // void sort_sprites(int * order, double * dist, int amount)
-// // {
-// //   std::vector<std::pair<double, int>> sprites(amount);
-// //   for(int i = 0; i < amount; i++) {
-// //     sprites[i].first = dist[i];
-// //     sprites[i].second = order[i];
-// //   }
-// //   std::sort(sprites.begin(), sprites.end());
-// //   // restore in reverse order to go from farthest to nearest
-// //   for(int i = 0; i < amount; i++) {
-// //     dist[i] = sprites[amount - i - 1].first;
-// //     order[i] = sprites[amount - i - 1].second;
-// //   }
-// // }
+void sort_sprites(t_data *data)
+{
+	int		i;
+	t_order	*sprites;
 
-// void sort_sprites(t_data *data)
-// {
-//   std::vector<std::pair<double, int>> sprites(amount);
-//   for(int i = 0; i < amount; i++) {
-//     sprites[i].first = dist[i];
-//     sprites[i].second = order[i];
-//   }
-//   std::sort(sprites.begin(), sprites.end());
-//   // restore in reverse order to go from farthest to nearest
-//   for(int i = 0; i < amount; i++) {
-//     dist[i] = sprites[amount - i - 1].first;
-//     order[i] = sprites[amount - i - 1].second;
-//   }
-// }
+	sprites = malloc(sizeof(t_order) * data->sprites_count);
+	i = -1;
+	while (++i < data->sprites_count)
+		sprites[i] = new_order(data->sprite_order[i], data->sprite_distance[i]);
+	sort_order(sprites, data->sprites_count);
+	i = -1;
+	while (++i < data->sprites_count)
+	{
+		data->sprite_order[i] = sprites[data->sprites_count - i - 1].order;
+		data->sprite_distance[i] = sprites[data->sprites_count - i - 1].dist;
+	}
+	free(sprites);
+}
 
 void	draw_sprites(t_data *data)
 {
@@ -279,8 +266,8 @@ void	draw_sprites(t_data *data)
 	int			texture_width;
 	int			texture_height;
 
-	texture_width = 64;
-	texture_height = 64;
+	texture_width = 35;
+	texture_height = 50;
 	i = -1;
 	while (++i < data->sprites_count)
 	{
@@ -291,9 +278,8 @@ void	draw_sprites(t_data *data)
 				+ (data->player.pos.y - data->map_sprites[i].pos.y)
 				* (data->player.pos.y - data->map_sprites[i].pos.y));
 	}
-    // sort_sprites(data);
+	sort_sprites(data);
 	i = -1;
-	// printf("sprites count : %d\n", data->sprites_count);
 	while (++i < data->sprites_count)
 	{
 		sprite_x = data->map_sprites[data->sprite_order[i]].pos.x
@@ -323,19 +309,19 @@ void	draw_sprites(t_data *data)
 		int draw_endx = sprite_width / 2 + sprite_screenx;
 		if (draw_endx >= WIN_WIDTH)
 			draw_endx = WIN_WIDTH - 1;
-		row = draw_startx - 1;
-		while (++row < draw_endx)
+		col = draw_startx - 1;
+		while (++col < draw_endx)
 		{
-        	int tex_x = (int)(256 * (row - (-sprite_width / 2
+        	int tex_x = (int)(256 * (col - (-sprite_width / 2
 				+ sprite_screenx)) * texture_width / sprite_width) / 256;
-			if (transform.y > 0 && transform.y < data->z_buffer[row])
+			if (transform.y > 0 && transform.y < data->z_buffer[col])
 			{
-				col = draw_starty - 1;
-				while (++col < draw_endy)
+				row = draw_starty - 1;
+				while (++row < draw_endy)
 				{
-					int d = (col) * 256 - WIN_HEIGHT * 128 + sprite_height * 128;
+					int d = (row) * 256 - WIN_HEIGHT * 128 + sprite_height * 128;
 					int tex_y = ((d * texture_height) / sprite_height) / 256;
-					unsigned int color = get_img_color(data->sprites[ENEMY_INDEX][0], tex_y, tex_x);
+					unsigned int color = get_animated_sprite_color(data->map_sprites[i].texture, data, tex_x, tex_y);
 					if ((color & 0x00FFFFFF) != 0)
 						*(unsigned int *)(data->frame.data_addr
 								+ (row * data->frame.size_line + col

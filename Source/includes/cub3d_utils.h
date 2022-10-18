@@ -18,6 +18,8 @@ void			print_color(t_color *color, t_string name);
 t_img			img_init(t_data *data, char *addr);
 void			textures_init(t_data *data);
 t_sprite_info	new_sprite_info(int x, int y, int texture);
+unsigned int	get_animated_sprite_color(char letter,
+					t_data *data, int x, int y);
 
 // get_next_line
 t_string		ft_substr(const t_string s, unsigned int start, size_t len);

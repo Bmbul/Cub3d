@@ -15,14 +15,30 @@ void	setup_player(t_data *data, int row, int col)
 			0.66 * data->player.dir.x);
 }
 
+void	update_animations(t_data *data)
+{
+	int					i;
+	t_animated_sprite	*s;
+
+	i = -1;
+	while (++i < SPRITES_COUNT)
+	{
+		s = data->a_sprites + i;
+		s->current_frame++;
+		if (s->current_frame >= s->frames_count)
+		{
+			s->current_index = (s->current_index + 1) % s->sprites_count;
+			s->current_frame = 0;
+		}
+	}
+}
+
 void	update(t_data *data)
 {
-	(void) data;
 	if (should_move(data))
-	{
 		move_player(data);
-		draw(data);
-	}
+	update_animations(data);
+	draw(data);
 }
 
 void	start_game(t_data *data)
