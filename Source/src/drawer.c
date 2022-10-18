@@ -113,13 +113,9 @@ int	init_texX(t_data *data, t_draw draw)
 
 	texX = (int)(wallX(data, draw) * (double)TEXT_WIDTH);
 	if (draw.side == 0 && draw.ray.x > 0)
-		texX = TEXT_WIDTH - texX + 1; // blue texture
-	if (draw.side == 0 && draw.ray.x > 0)
-		texX = TEXT_WIDTH - texX + 2 + 64; // yellow texture
+		texX = TEXT_WIDTH - texX - 1;
 	if (draw.side == 1 && draw.ray.y < 0)
-		texX = TEXT_WIDTH - texX + 1 + 128; // grey texture
-	if (draw.side == 1 && draw.ray.y > 0)
-		texX = TEXT_WIDTH - texX + 2 + 192; // brown texture
+		texX = TEXT_WIDTH - texX - 1;
 	return (texX);
 }
 
@@ -212,7 +208,7 @@ void	vertical_line(t_data *data, int col, t_draw draw)
 {
 	int				row;
 	int				texY;
-	unsigned int	color_hex;
+	unsigned int	hex;
 
 	row = -1;
 	while (++row < WIN_HEIGHT)
@@ -220,15 +216,24 @@ void	vertical_line(t_data *data, int col, t_draw draw)
 		texY = (int)draw.texPos & (64 - 1);
 		draw.texPos += draw.ratio;
 		if (row >= draw.drawStart && row <= draw.drawEnd)
-			color_hex = data->textures->north.texture[texY + 64 * draw.texX];
+		{
+			if (draw.side == 0 && draw.ray.x > 0)
+				hex = data->textures->south.texture[texY + 64 * draw.texX];
+			else if (draw.side == 0 && draw.ray.x < 0)
+				hex = data->textures->north.texture[texY + 64 * draw.texX];
+			else if (draw.side == 1 && draw.ray.y < 0)
+				hex = data->textures->west.texture[texY + 64 * draw.texX];
+			else if (draw.side == 1 && draw.ray.y > 0)
+				hex = data->textures->east.texture[texY + 64 * draw.texX];
+		}
 		else if (row > WIN_HEIGHT / 2)
-			color_hex = get_color(*(data->floor_color));
+			hex = get_color(*(data->floor_color));
 		else
-			color_hex = get_color(*(data->ceiling_color));
+			hex = get_color(*(data->ceiling_color));
 		*(unsigned int *)(data->frame.data_addr
 				+ (row * data->frame.size_line + col
 					* (data->frame.bits_per_pixel / 8)))
-			= color_hex;
+			= hex;
 	}
 	draw_ceiling(data, draw, col);
 }
@@ -351,7 +356,7 @@ void	draw_minimap(t_data *data)
 		{
 			n = jdx - MAP_OFFSET;
 			n = (n - n % MINI_SCALE) / MINI_SCALE;
-			if (n == (int)data->player.pos.y && m == (int)data->player.pos.x)
+			if (n == (int )data->player.pos.y && m == (int)data->player.pos.x)
 				color = 0xFF0000;
 			else if (data->map[m][n] == '1')
 				color = 0xDEDEDE;

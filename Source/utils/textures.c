@@ -43,7 +43,7 @@ t_sprite_info	new_sprite_info(int x, int y, int texture)
 {
 	t_sprite_info	sprite;
 
-	sprite.pos = new_tuple(x, y);
+	sprite.pos = new_vector(y + 0.5, x + 0.5);
 	sprite.texture = texture;
 	return (sprite);
 }

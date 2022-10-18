@@ -13,11 +13,10 @@ void	mouse_move(int x, int y, t_data *data)
 {
 	if (data->mouse.hor != WIN_WIDTH / 2)
 	{
-		if ((data->mouse.hor - x) < 0)
-			rotate(data, 1);
-		else
+		if ((data->mouse.hor - x) < -1)
 			rotate(data, -1);
-		draw(data);
+		else if ((data->mouse.hor - x) > 1)
+			rotate(data, 1);
 	}
 	data->mouse.hor = x;
 	data->mouse.ver = y;

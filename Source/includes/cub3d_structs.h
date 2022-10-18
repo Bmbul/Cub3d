@@ -107,8 +107,8 @@ struct s_anim_sprite
 
 struct s_sprite_info
 {
-	t_tuple	pos;
-	int		texture;
+	t_vector	pos;
+	int			texture;
 };
 
 struct s_data

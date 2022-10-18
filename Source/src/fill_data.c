@@ -46,7 +46,7 @@ void	fill_map(t_string line, t_data *data)
 	int u  = -1;
 	while (++u < data->sprites_count)
 	{
-		printf("sprite[%d] = {[%d %d], with index %c}\n", u,
+		printf("sprite[%d] = {[%f %f], with index %c}\n", u,
 			data->map_sprites[u].pos.x, data->map_sprites[u].pos.y, data->map_sprites[u].texture);
 	}
 	data->map_height = data->map_list->count;

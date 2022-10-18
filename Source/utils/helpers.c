@@ -29,12 +29,12 @@ t_bool	str_contains_only(t_string word, t_string charset)
 
 t_bool	has_extention(t_string path, t_string extention)
 {
-	int	i;
+	int	len;
+	int	ext_len;
 
-	i = -1;
-	while (path[++i] && path[i] != '.')
-		;
-	if (!path[i++])
+	len = ft_strlen(path);
+	ext_len = ft_strlen(extention);
+	if (len < ext_len)
 		return (FALSE);
-	return (ft_strcmp(path + i, extention));
+	return (ft_strcmp(path + len - ext_len, extention));
 }

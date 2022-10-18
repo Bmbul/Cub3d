@@ -5,15 +5,15 @@ void	move_forward(t_data *data, int dir)
 	t_text	map;
 
 	map = data->map;
-	if (map[(int)(data->player.pos.x + dir
-			* data->player.dir.x * MOVEMENT_SPEED)]
-		[(int)(data->player.pos.y)] == '0')
+	if (!contains("12", map[(int)(data->player.pos.x + dir
+				* data->player.dir.x * MOVEMENT_SPEED)]
+		[(int)(data->player.pos.y)]))
 	{
 		data->player.pos.x = data->player.pos.x
 			+ data->player.dir.x * dir * MOVEMENT_SPEED;
 	}
-	if (map[(int)(data->player.pos.x)][(int)(data->player.pos.y
-		+ dir * data->player.dir.y * MOVEMENT_SPEED)] == '0')
+	if (!contains("12", map[(int)(data->player.pos.x)][(int)(data->player.pos.y
+		+ dir * data->player.dir.y * MOVEMENT_SPEED)]))
 	{
 		data->player.pos.y = data->player.pos.y
 			+ dir * data->player.dir.y * MOVEMENT_SPEED;
@@ -27,15 +27,15 @@ void	move_side(t_data *data, int dir)
 
 	move_dir = new_vector(-data->player.dir.y, data->player.dir.x);
 	map = data->map;
-	if (map[(int)(data->player.pos.x + dir
-			* move_dir.x * MOVEMENT_SPEED)]
-		[(int)(data->player.pos.y)] == '0')
+	if (!contains("12", map[(int)(data->player.pos.x + dir
+				* move_dir.x * MOVEMENT_SPEED)]
+		[(int)(data->player.pos.y)]))
 	{
 		data->player.pos.x = data->player.pos.x
 			+ move_dir.x * dir * MOVEMENT_SPEED;
 	}
-	if (map[(int)(data->player.pos.x)][(int)(data->player.pos.y
-		+ dir * move_dir.y * MOVEMENT_SPEED)] == '0')
+	if (!contains("12", map[(int)(data->player.pos.x)][(int)(data->player.pos.y
+		+ dir * move_dir.y * MOVEMENT_SPEED)]))
 	{
 		data->player.pos.y = data->player.pos.y
 			+ dir * move_dir.y * MOVEMENT_SPEED;
@@ -62,9 +62,9 @@ void	rotate(t_data *data, int dir)
 void	move_player(t_data *data)
 {
 	if (data->mov_input.x)
-		move_side(data, data->mov_input.x);
+		move_side(data, -data->mov_input.x);
 	if (data->mov_input.y)
 		move_forward(data, data->mov_input.y);
 	if (data->mov_input.rot)
-		rotate(data, data->mov_input.rot);
+		rotate(data, -data->mov_input.rot);
 }
