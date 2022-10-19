@@ -9,10 +9,9 @@
 # define ANIM_CHANGE_FRAME	50
 
 // minimap
-# define MAP_WIDTH			144
-# define MAP_HEIGHT			144
 # define MAP_OFFSET			32
 # define MINI_SCALE			6
+# define MINI_SIZE			12
 
 // boolean
 # define TRUE				1
