@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:09:25 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 00:11:09 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 t_bool	validate_input_file(t_string input)
@@ -52,7 +64,6 @@ t_bool	validate_texture_paths(t_data *data)
 		fd = open(data->texture_paths[i], O_RDONLY);
 		if (fd == -1)
 			return (FALSE);
-		//printf("validated %d\n", i);
 		close(fd);
 	}
 	return (TRUE);
@@ -97,8 +108,6 @@ t_bool	validate_map(t_data *data)
 				setup_player(data, row, col);
 				start_count++;
 			}
-			//printf("validated map[%d][%d] = %c\n", row, col,
-				// data->map[row][col]);
 		}
 	}
 	return (start_count == 1);

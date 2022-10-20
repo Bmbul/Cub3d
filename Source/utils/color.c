@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:10:10 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 02:18:09 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 t_color	*new_color(t_string	input_color)
@@ -17,6 +29,7 @@ t_color	*new_color(t_string	input_color)
 	color->red = basic_atouc(colors[0]);
 	color->green = basic_atouc(colors[1]);
 	color->blue = basic_atouc(colors[2]);
+	free_array(colors);
 	return (color);
 }
 

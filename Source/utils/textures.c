@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:10:23 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 02:21:32 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 t_img	img_init(t_data *data, char *addr)
@@ -38,5 +50,3 @@ void	textures_init(t_data *data)
 	data->textures->south = img_init(data, data->texture_paths[_SOUTH]);
 	sprites_init(data);
 }
-
-

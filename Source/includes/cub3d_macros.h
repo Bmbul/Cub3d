@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_macros.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:09:04 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 00:47:11 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_MACROS_H
 # define CUB3D_MACROS_H
 
@@ -12,6 +24,13 @@
 # define MAP_OFFSET			32
 # define MINI_SCALE			6
 # define MINI_SIZE			12
+
+// minimap colors
+# define MINIMAP_OUTER		0x433BDE
+# define MINIMAP_ZERO		0x433BDE
+# define MINIMAP_ONE		0xDEDEDE
+# define MINIMAP_TWO		0xFF00FF
+# define MINIMAP_PLAYER		0x00FF00
 
 // boolean
 # define TRUE				1

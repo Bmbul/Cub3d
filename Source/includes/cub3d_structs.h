@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_structs.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:09:06 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 00:17:11 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_STRUCTS_H
 # define CUB3D_STRUCTS_H
 
@@ -17,7 +29,17 @@ typedef struct s_sprite_draw	t_sprite_draw;
 typedef struct s_sprite_info	t_sprite_info;
 typedef struct s_mouse			t_mouse;
 typedef struct s_anim_sprite	t_animated_sprite;
+typedef struct s_minimap		t_minimap;
 
+struct s_minimap {
+	int				ver_block;
+	int				hor_block;
+	int				ver_pixel;
+	int				hor_pixel;
+	int				ver_scale;
+	int				hor_scale;
+	unsigned int	color;
+};
 
 struct s_mouse {
 	int	hor;

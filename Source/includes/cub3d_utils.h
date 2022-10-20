@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_utils.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:09:07 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 00:09:08 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_UTILS_H
 # define CUB3D_UTILS_H
 
@@ -17,7 +29,6 @@ void			print_color(t_color *color, t_string name);
 // textures.c
 t_img			img_init(t_data *data, char *addr);
 void			textures_init(t_data *data);
-
 
 // sprites.c
 unsigned int	get_animated_sprite_color(char letter,
