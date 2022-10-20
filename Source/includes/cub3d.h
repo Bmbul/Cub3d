@@ -76,12 +76,43 @@ t_bool		fill_attribute(t_string line, t_data *data);
 // free_data.c
 void		free_data(t_data *data);
 
-// drawer.c
-void		draw(t_data *data);
-void		fill_black_frame(t_data *data);
-void		vertical_line(t_data *data, int i, t_draw draw);
-
 // mouse.c
 t_mouse		init_mouse(void);
 void		mouse_move(int x, int y, t_data *data);
+
+// DRAWING
+//draw_init_sides.c
+void		init_side_hit(t_data *data, t_draw *draw);
+t_vector	init_side_dist(t_data *data, t_draw draw);
+
+// draw_init_texture.c
+double		init_tex_pos(t_draw draw);
+int			init_tex_x(t_data *data, t_draw draw);
+
+// draw_init.c
+t_tuple		init_step(t_draw draw);
+int			init_draw_end(t_draw draw);
+int			init_draw_start(t_draw draw);
+t_draw		init_draw(t_data *data, int col);
+
+// draw_sprites.c
+void		draw_sprites(t_data *data);
+
+// drawing_utils.c
+double		camera_x(int col);
+double		perp_wall_dist(t_draw draw);
+t_vector	init_delta_dist(t_draw draw);
+t_vector	init_ray(t_data *data, int col);
+double		wall_x(t_data *data, t_draw draw);
+
+// drawer.c
+void		draw(t_data *data);
+
+// drawing_sprites_utils.c
+int			tex_y(t_sprite_draw draw_data, int row);
+int			tex_x(t_sprite_draw draw_data, int col);
+
+//minimap.c
+void		draw_minimap(t_data *data);
+
 #endif

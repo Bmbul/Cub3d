@@ -13,7 +13,7 @@ t_img	img_init(t_data *data, char *addr)
 	return (img);
 }
 
-void	sprites_init(t_data *data)
+static void	sprites_init(t_data *data)
 {
 	data->a_sprites = malloc(sizeof(t_animated_sprite) * SPRITES_COUNT);
 	data->a_sprites[ENEMY_INDEX].sprites = malloc(sizeof(t_img) * 3);
@@ -39,28 +39,4 @@ void	textures_init(t_data *data)
 	sprites_init(data);
 }
 
-t_sprite_info	new_sprite_info(int x, int y, int texture)
-{
-	t_sprite_info	sprite;
 
-	sprite.pos = new_vector(y + 0.5, x + 0.5);
-	sprite.texture = texture;
-	return (sprite);
-}
-
-unsigned int	get_animated_sprite_color(char letter,
-	t_data *data, int x, int y)
-{
-	unsigned int		color;
-	t_animated_sprite	current_sprite;
-
-	if (letter == ENEMY)
-	{
-		current_sprite = data->a_sprites[ENEMY_INDEX];
-		color = get_img_color(current_sprite.sprites
-			[current_sprite.current_index], x, y);
-	}
-	else
-		color = 0;
-	return (color);
-}

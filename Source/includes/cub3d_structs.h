@@ -13,9 +13,11 @@ typedef struct s_key_map		t_key_map;
 typedef struct s_data			t_data;
 typedef struct s_mov_inp		t_mov_inp;
 typedef struct s_draw			t_draw;
+typedef struct s_sprite_draw	t_sprite_draw;
 typedef struct s_sprite_info	t_sprite_info;
 typedef struct s_mouse			t_mouse;
 typedef struct s_anim_sprite	t_animated_sprite;
+
 
 struct s_mouse {
 	int	hor;
@@ -30,13 +32,30 @@ struct s_draw {
 	t_vector	side_dist;
 	t_tuple		step;
 	int			side;
-	int			lineHeight;
+	int			line_height;
 	int			ceiling_size;
-	int			texX;
-	int			drawStart;
-	int			drawEnd;
+	int			tex_x;
+	int			draw_start;
+	int			draw_end;
 	double		ratio;
-	double		texPos;
+	double		tex_pos;
+};
+
+struct s_sprite_draw
+{
+	t_vector	pos;
+	double		inv_det;
+	int			sprite_screenx;
+	int			sprite_height;
+	t_vector	transform;
+	int			texture_width;
+	int			texture_height;
+	int			draw_starty;
+	int			draw_endy;
+	int			sprite_width;
+	int			draw_startx;
+	int			draw_endx;
+	int			i;
 };
 
 struct s_player
