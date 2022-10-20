@@ -59,4 +59,3 @@ void	draw_minimap(t_data *data)
 		hor_block++;
 	}
 }
-

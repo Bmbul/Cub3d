@@ -45,11 +45,6 @@ t_data		*data_init(void);
 t_bool		add_to_data(t_node *data_node, t_data *data);
 void		mlx_data_init(t_data *data);
 
-// drawer.c
-void		draw_map(t_data *data);
-void		draw_sprites(t_data *data);
-void		draw_minimap(t_data *data);
-
 // game_manager.c
 void		start_game(t_data	*data);
 void		setup_player(t_data *data, int row, int col);
@@ -67,7 +62,6 @@ void		key_release(int key_code, t_data *data);
 void		move_player(t_data *data);
 void		rotate(t_data *data, int dir);
 
-
 // fill_data.c
 t_bool		fill_map_list(t_string line, t_data *data);
 void		fill_map(t_string line, t_data *data);
@@ -81,6 +75,10 @@ t_mouse		init_mouse(void);
 void		mouse_move(int x, int y, t_data *data);
 
 // DRAWING
+
+//draw_doors.c
+void		draw_doors(t_data *data);
+
 //draw_init_sides.c
 void		init_side_hit(t_data *data, t_draw *draw);
 t_vector	init_side_dist(t_data *data, t_draw draw);

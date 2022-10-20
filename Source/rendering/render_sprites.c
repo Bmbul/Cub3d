@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	sort_sprites(t_data *data)
+static void	sort_sprites(t_data *data)
 {
 	int		i;
 	t_order	*sprites;
@@ -29,7 +29,7 @@ void	sort_sprites(t_data *data)
 	free(sprites);
 }
 
-void	draw_sprite(t_data *data, t_sprite_draw draw_data)
+static void	draw_sprite(t_data *data, t_sprite_draw draw_data)
 {
 	int				row;
 	int				col;
@@ -57,7 +57,7 @@ void	draw_sprite(t_data *data, t_sprite_draw draw_data)
 	}
 }
 
-void	setup_data(t_sprite_draw	*draw_data)
+static void	setup_data(t_sprite_draw	*draw_data)
 {
 	draw_data->sprite_screenx = (int)((WIN_WIDTH / 2)
 			* (1 + draw_data->transform.x / draw_data->transform.y));
@@ -80,6 +80,12 @@ void	setup_data(t_sprite_draw	*draw_data)
 		draw_data->draw_endx = WIN_WIDTH - 1;
 }
 
+static void	setup_texture_sizes(t_sprite_draw *draw_data)
+{
+	draw_data->texture_width = 35;
+	draw_data->texture_height = 50;
+}
+
 void	draw_sprites(t_data *data)
 {
 	t_sprite_draw	*draw_data;
@@ -89,8 +95,7 @@ void	draw_sprites(t_data *data)
 	draw_data->i = -1;
 	while (++(draw_data->i) < data->sprites_count)
 	{
-		draw_data->texture_width = 35;
-		draw_data->texture_height = 50;
+		setup_texture_sizes(draw_data);
 		draw_data->pos.x = data->map_sprites[data->sprite_order[draw_data->i]]
 			.pos.x - data->player.pos.x;
 		draw_data->pos.y = data->map_sprites[data->sprite_order[draw_data->i]]

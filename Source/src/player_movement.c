@@ -1,19 +1,24 @@
 #include "../includes/cub3d.h"
 
+t_bool	can_move(t_data *data, t_vector mov_dir, t_tuple inp_dir)
+{
+	char	map_letter;
+
+	map_letter = data->map[(int)(data->player.pos.x + inp_dir.x
+			* mov_dir.x * MOVEMENT_SPEED)]
+	[(int)(data->player.pos.y + inp_dir.y
+			* mov_dir.y * MOVEMENT_SPEED)];
+	return (!contains("123", map_letter));
+}
+
 void	move_forward(t_data *data, int dir)
 {
-	t_text	map;
-
-	map = data->map;
-	if (!contains("12", map[(int)(data->player.pos.x + dir
-				* data->player.dir.x * MOVEMENT_SPEED)]
-		[(int)(data->player.pos.y)]))
+	if (can_move(data, data->player.dir, new_tuple(dir, 0)))
 	{
 		data->player.pos.x = data->player.pos.x
 			+ data->player.dir.x * dir * MOVEMENT_SPEED;
 	}
-	if (!contains("12", map[(int)(data->player.pos.x)][(int)(data->player.pos.y
-		+ dir * data->player.dir.y * MOVEMENT_SPEED)]))
+	if (can_move(data, data->player.dir, new_tuple(0, dir)))
 	{
 		data->player.pos.y = data->player.pos.y
 			+ dir * data->player.dir.y * MOVEMENT_SPEED;
@@ -27,15 +32,12 @@ void	move_side(t_data *data, int dir)
 
 	move_dir = new_vector(-data->player.dir.y, data->player.dir.x);
 	map = data->map;
-	if (!contains("12", map[(int)(data->player.pos.x + dir
-				* move_dir.x * MOVEMENT_SPEED)]
-		[(int)(data->player.pos.y)]))
+	if (can_move(data, move_dir, new_tuple(dir, 0)))
 	{
 		data->player.pos.x = data->player.pos.x
 			+ move_dir.x * dir * MOVEMENT_SPEED;
 	}
-	if (!contains("12", map[(int)(data->player.pos.x)][(int)(data->player.pos.y
-		+ dir * move_dir.y * MOVEMENT_SPEED)]))
+	if (can_move(data, move_dir, new_tuple(0, dir)))
 	{
 		data->player.pos.y = data->player.pos.y
 			+ dir * move_dir.y * MOVEMENT_SPEED;
