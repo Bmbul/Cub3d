@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:06 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:17:11 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 05:56:20 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,9 @@ struct s_data
 	void				*window;
 	t_img				frame;
 	int					fd;
+	int					error_code;
 	t_text				map;
+	t_text				door_map;
 	int					map_width;
 	int					map_height;
 	int					sprites_count;

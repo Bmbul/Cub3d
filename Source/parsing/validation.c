@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:25 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:11:09 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:11:37 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,11 @@ t_bool	validate_arguments(t_data *data)
 		}
 		current = current->next;
 	}
-	if (!validate_texture_paths(data))
-	{
-		print_error("Did not validate texture paths\n");
-		return (FALSE);
-	}
+	validate_texture_paths(data);
 	return (TRUE);
 }
 
-t_bool	validate_texture_paths(t_data *data)
+void	validate_texture_paths(t_data *data)
 {
 	int	fd;
 	int	i;
@@ -55,18 +51,17 @@ t_bool	validate_texture_paths(t_data *data)
 	i = -1;
 	while (++i < TEXTURES_COUNT)
 	{
-		if (!has_extention(data->texture_paths[i], "xpm"))
+		if (has_extention(data->texture_paths[i], "xpm"))
 		{
-			printf("Does not have right extention: %s\n", \
-				data->texture_paths[i]);
-			return (FALSE);
+			fd = open(data->texture_paths[i], O_RDONLY);
+			if (fd != -1)
+				close(fd);
+			else
+				print_error_and_exit(BAD_ARG_FILE);
 		}
-		fd = open(data->texture_paths[i], O_RDONLY);
-		if (fd == -1)
-			return (FALSE);
-		close(fd);
+		else
+			print_error_and_exit(WRONG_FILE_EXT);
 	}
-	return (TRUE);
 }
 
 t_bool	not_surrounded_by_walls(t_data *data, int row, int col)
@@ -100,7 +95,7 @@ t_bool	validate_map(t_data *data)
 		col = -1;
 		while (++col < data->map_width)
 		{
-			if (data->map[row][col] == GROUND)
+			if (data->map[row][col] != WALL && data->map[row][col] != EMPTY)
 				if (not_surrounded_by_walls(data, row, col))
 					return (FALSE);
 			if (contains("NEWS", data->map[row][col]))

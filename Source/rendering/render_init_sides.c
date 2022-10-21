@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_init_sides.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:30 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:31 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 05:53:02 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	init_door_side_hit(t_data *data, t_draw *draw)
 			return ;
 		if (data->map[draw->map.x][draw->map.y] == draw->letter)
 		{
-			draw->side_dist.x += 0.5;
 			data->seen_door = 1;
 			draw->hit = 1;
 		}

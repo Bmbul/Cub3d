@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:52 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:53 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 06:07:53 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	exit_game(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->window);
 	mlx_destroy_window(data->mlx, data->window);
-	free_data(data);
+	full_free_data(data);
 	exit(0);
 }
 

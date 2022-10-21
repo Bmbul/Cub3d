@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:09 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:10 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:02:30 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # include "cub3d_utils.h"
 
 // validation
-t_bool		validate_texture_paths(t_data *input);
+void		validate_texture_paths(t_data *input);
 t_bool		validate_arguments(t_data *data);
 t_bool		validate_map(t_data *data);
 t_bool		validate_input_file(t_string input);
@@ -45,7 +45,7 @@ t_bool		is_start_of_map(t_string str, int *return_value);
 t_bool		is_attribute(t_string str);
 
 // parsing.c
-t_bool		parse(t_string path, t_data *data);
+void		parse(t_string path, t_data *data);
 
 // filling_map_data.c
 int			get_sprites_count(t_list *list);
@@ -80,7 +80,8 @@ void		fill_map(t_string line, t_data *data);
 t_bool		fill_attribute(t_string line, t_data *data);
 
 // free_data.c
-void		free_data(t_data *data);
+void		free_parsing_data(t_data *data);
+void		full_free_data(t_data *data);
 
 // mouse.c
 t_mouse		init_mouse(void);

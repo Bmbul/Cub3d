@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:46 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 02:20:36 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 06:43:59 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	set_nulls(t_data *data)
+{
+	data->map = NULL;
+	data->ceiling_color = NULL;
+	data->floor_color = NULL;
+	data->mlx = NULL;
+	data->window = NULL;
+	data->textures = NULL;
+	data->color_strings = NULL;
+	data->texture_paths[_NORTH] = NULL;
+	data->texture_paths[_EAST] = NULL;
+	data->texture_paths[_WEST] = NULL;
+	data->texture_paths[_SOUTH] = NULL;
+	data->sprite_distance = NULL;
+	data->sprite_order = NULL;
+	data->map_sprites = NULL;
+}
 
 t_data	*data_init(void)
 {
@@ -18,18 +36,13 @@ t_data	*data_init(void)
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		print_error_and_exit("Could not create Game Data");
-	data->map = NULL;
-	data->ceiling_color = NULL;
-	data->floor_color = NULL;
-	data->mlx = NULL;
-	data->window = NULL;
-	data->textures = NULL;
+		print_error_and_exit(COULD_NOT_INIT);
+	set_nulls(data);
+	data->error_code = 0;
 	data->input_dict = new_dict();
 	data->map_list = new_list();
 	data->map_height = 0;
 	data->map_width = 0;
-	data->color_strings = NULL;
 	data->key_map = (t_key_map){0};
 	data->mouse = init_mouse();
 	data->seen_door = 0;
@@ -54,7 +67,7 @@ void	print_data(t_data *data)
 
 	i = -1;
 	if (!data)
-		print_error_and_exit("NO DATA\n");
+		print_error_and_exit(COULD_NOT_INIT);
 	current = data->input_dict->head;
 	while (++i < data->input_dict->count)
 	{
@@ -78,10 +91,7 @@ t_bool	add_to_data(t_node *data_node, t_data *data)
 	{
 		data->floor_color = new_color(data_node->value);
 		if (!data->floor_color)
-		{
-			printf("something went wrong\n");
 			return (FALSE);
-		}
 	}
 	else if (ft_strcmp(data_node->key, "C"))
 	{
@@ -90,10 +100,6 @@ t_bool	add_to_data(t_node *data_node, t_data *data)
 			return (FALSE);
 	}
 	else
-	{
-		printf("wrong argument\nkey = %s, value = %s\n", \
-			data_node->key, data_node->value);
 		return (FALSE);
-	}
 	return (TRUE);
 }

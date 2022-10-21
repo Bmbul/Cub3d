@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_macros.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:04 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:47:11 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:00:21 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 # define SENSITIVITY		0.05
 # define MOVEMENT_SPEED		0.1
 # define ANIM_CHANGE_FRAME	50
+
+// ERROR_CODES
+# define BAD_INPUT_FILE		1
+# define BAD_ARGUMENT		2
+# define UNRECOGNIZED_LINE	3
+# define BAD_MAP			4
+# define TEXTURE_MISSING	5
+# define COULD_NOT_INIT		6
+# define WRONG_NUM_ARGS		7
+# define WRONG_FILE_EXT		8
+# define BAD_ARG_FILE		9
 
 // minimap
 # define MAP_OFFSET			32
@@ -70,12 +81,6 @@
 # define _EAST				1
 # define _WEST				2
 # define _SOUTH				3
-
-// gexavari_directions
-# define FORWARD			1
-# define BACKWARDS			-1
-# define LEFT				-1
-# define RIGHT				1
 
 // keys
 # ifdef __linux__
