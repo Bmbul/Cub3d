@@ -80,10 +80,17 @@ static void	setup_data(t_sprite_draw	*draw_data)
 		draw_data->draw_endx = WIN_WIDTH - 1;
 }
 
-static void	setup_texture_sizes(t_sprite_draw *draw_data)
+static void	setup_texture_sizes(t_data *data, t_sprite_draw *draw_data)
 {
-	draw_data->texture_width = 35;
-	draw_data->texture_height = 50;
+	int					texture;
+	t_animated_sprite	current_sprites;
+	t_img				current_sprite;
+
+	texture = data->map_sprites[data->sprite_order[draw_data->i]].texture;
+	current_sprites = get_animated_sprite(data, texture);
+	current_sprite = current_sprites.sprites[current_sprites.current_index];
+	draw_data->texture_width = current_sprite.size.x;
+	draw_data->texture_height = current_sprite.size.y;
 }
 
 void	draw_sprites(t_data *data)
@@ -95,7 +102,8 @@ void	draw_sprites(t_data *data)
 	draw_data->i = -1;
 	while (++(draw_data->i) < data->sprites_count)
 	{
-		setup_texture_sizes(draw_data);
+		setup_texture_sizes(data, draw_data);
+		// printf("sprite sizes: %d %d\n", draw_data->texture_width, draw_data->texture_height);
 		draw_data->pos.x = data->map_sprites[data->sprite_order[draw_data->i]]
 			.pos.x - data->player.pos.x;
 		draw_data->pos.y = data->map_sprites[data->sprite_order[draw_data->i]]

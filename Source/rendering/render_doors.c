@@ -2,5 +2,5 @@
 
 void	draw_doors(t_data *data)
 {
-
+	(void) data;
 }

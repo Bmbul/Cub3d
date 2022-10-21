@@ -80,7 +80,8 @@ void		mouse_move(int x, int y, t_data *data);
 void		draw_doors(t_data *data);
 
 //draw_init_sides.c
-void		init_side_hit(t_data *data, t_draw *draw);
+void		init_wall_side_hit(t_data *data, t_draw *draw);
+void		init_door_side_hit(t_data *data, t_draw *draw);
 t_vector	init_side_dist(t_data *data, t_draw draw);
 
 // draw_init_texture.c
@@ -91,7 +92,7 @@ int			init_tex_x(t_data *data, t_draw draw);
 t_tuple		init_step(t_draw draw);
 int			init_draw_end(t_draw draw);
 int			init_draw_start(t_draw draw);
-t_draw		init_draw(t_data *data, int col);
+t_draw		init_draw(t_data *data, int col, char letter);
 
 // draw_sprites.c
 void		draw_sprites(t_data *data);

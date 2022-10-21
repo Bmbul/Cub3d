@@ -31,6 +31,7 @@
 # define MAP_CHARS_WN		"0123456789NEWS \n"
 # define WALL				'1'
 # define ENEMY				'2'
+# define DOOR				'3'
 # define GROUND				'0'
 # define NORTH				'N'
 # define EAST				'E'

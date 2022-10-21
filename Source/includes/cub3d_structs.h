@@ -39,6 +39,7 @@ struct s_draw {
 	int			draw_end;
 	double		ratio;
 	double		tex_pos;
+	char		letter;
 };
 
 struct s_sprite_draw
@@ -89,6 +90,7 @@ struct s_textures
 	t_img	east;
 	t_img	west;
 	t_img	south;
+	t_img	door;
 };
 
 struct s_color
@@ -157,6 +159,7 @@ struct s_data
 	int					*sprite_order;
 	double				*sprite_distance;
 	double				z_buffer[WIN_WIDTH];
+	int					seen_door;
 };
 
 #endif

@@ -14,7 +14,7 @@ int	get_sprites_count(t_list *list)
 	{
 		i = -1;
 		while (current->value[++i])
-			if (contains("23456789", current->value[i]))
+			if (contains("2", current->value[i]))
 				sprites_count++;
 		current = current->next;
 	}
@@ -39,7 +39,7 @@ void	get_map_sprites(t_data *data)
 		col = -1;
 		while (current->value[++col])
 		{
-			if (contains("23456789", current->value[col]))
+			if (contains("2", current->value[col]))
 				data->map_sprites[++index]
 					= new_sprite_info(col, row, current->value[col]);
 		}

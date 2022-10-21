@@ -1,6 +1,27 @@
 #include "cub3d.h"
 
-void	init_side_hit(t_data *data, t_draw *draw)
+void	init_wall_side_hit(t_data *data, t_draw *draw)
+{
+	while (draw->hit == 0)
+	{
+		if (draw->side_dist.x < draw->side_dist.y)
+		{
+			draw->side_dist.x += draw->delta_dist.x;
+			draw->map.x += draw->step.x;
+			draw->side = 0;
+		}
+		else
+		{
+			draw->side_dist.y += draw->delta_dist.y;
+			draw->map.y += draw->step.y;
+			draw->side = 1;
+		}
+		if (data->map[draw->map.x][draw->map.y] == draw->letter)
+			draw->hit = 1;
+	}
+}
+
+void	init_door_side_hit(t_data *data, t_draw *draw)
 {
 	while (draw->hit == 0)
 	{
@@ -17,7 +38,13 @@ void	init_side_hit(t_data *data, t_draw *draw)
 			draw->side = 1;
 		}
 		if (data->map[draw->map.x][draw->map.y] == '1')
+			return ;
+		if (data->map[draw->map.x][draw->map.y] == draw->letter)
+		{
+			draw->side_dist.x += 0.5;
+			data->seen_door = 1;
 			draw->hit = 1;
+		}
 	}
 }
 

@@ -35,17 +35,23 @@ t_tuple	init_step(t_draw draw)
 	return (step);
 }
 
-t_draw	init_draw(t_data *data, int col)
+t_draw	init_draw(t_data *data, int col, char letter)
 {
 	t_draw	draw;
 
+	draw.letter = letter;
 	draw.hit = 0;
 	draw.ray = init_ray(data, col);
 	draw.map = vector_to_tuple(data->player.pos);
 	draw.delta_dist = init_delta_dist(draw);
 	draw.side_dist = init_side_dist(data, draw);
 	draw.step = init_step(draw);
-	init_side_hit(data, &draw);
+	if (draw.letter == WALL)
+		init_wall_side_hit(data, &draw);
+	else
+		init_door_side_hit(data, &draw);
+	if (!draw.hit)
+		return (draw);
 	draw.line_height = (int)(WIN_HEIGHT / perp_wall_dist(draw));
 	draw.ceiling_size = -draw.line_height / 2 + WIN_HEIGHT / 2;
 	draw.draw_start = init_draw_start(draw);

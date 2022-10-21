@@ -24,6 +24,8 @@ void	update_animations(t_data *data)
 	while (++i < SPRITES_COUNT)
 	{
 		s = data->a_sprites + i;
+		if (s->frames_count == 1)
+			continue ;
 		s->current_frame++;
 		if (s->current_frame >= s->frames_count)
 		{
