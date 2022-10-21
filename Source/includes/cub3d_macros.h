@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:04 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 07:00:21 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:24:57 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@
 // boolean
 # define TRUE				1
 # define FALSE				0
-
-# define ERROR_CODE			1
 
 // textures
 # define TEXT_WIDTH			64

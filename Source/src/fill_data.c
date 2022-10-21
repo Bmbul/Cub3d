@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:48 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 02:18:50 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:38:17 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,22 @@ void	fill_map_line(t_data *data, int index, t_string value)
 
 	i = -1;
 	data->map[index] = malloc(data->map_width + 1);
+	data->door_map[index] = malloc(data->map_width + 1);
 	while (++i < data->map_width && value[i] && value[i] != '\n')
+	{
 		data->map[index][i] = value[i];
+		if (value[i] == DOOR)
+			data->door_map[index][i] = '1';
+		else
+			data->door_map[index][i] = '5';
+	}
 	while (i < data->map_width)
+	{
 		data->map[index][i++] = ' ';
+		data->door_map[index][i] = '1';
+	}
 	data->map[index][data->map_width] = 0;
+	data->door_map[index][data->map_width] = 0;
 }
 
 void	fill_map(t_string line, t_data *data)
@@ -58,6 +69,7 @@ void	fill_map(t_string line, t_data *data)
 	if (data->map_width == 0)
 		return ;
 	data->map = malloc(sizeof(t_string) * (data->map_height + 1));
+	data->door_map = malloc(sizeof(t_string) * (data->map_height + 1));
 	current = data->map_list->head;
 	while (++i < data->map_height)
 	{
@@ -65,6 +77,7 @@ void	fill_map(t_string line, t_data *data)
 		current = current->next;
 	}
 	data->map[i] = 0;
+	data->door_map[i] = 0;
 }
 
 t_bool	fill_attribute(t_string line, t_data *data)

@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:24 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 08:15:52 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:34:35 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	print_map(t_data *data)
 	printf("\t\tMAP\t\t      \n");
 	while (data->map[++i])
 		printf("%s\n", data->map[i]);
+	i = -1;
+	printf("\n\tDOOR MAP\t\t      \n");
+	while (data->door_map[++i])
+		printf("%s\n", data->door_map[i]);
 }
 
 void	parse(t_string path, t_data *data)
@@ -60,6 +64,7 @@ void	parse(t_string path, t_data *data)
 		return ;
 	}
 	read_from_input(data);
+	print_map(data);
 	if (!validate_arguments(data))
 		data->error_code = BAD_ARGUMENT;
 	else if (!validate_map(data))
