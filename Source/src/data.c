@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:46 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 06:43:59 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:08:57 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	print_data(t_data *data)
 		printf("key: %s, value %s\n", current->key, current->value);
 		current = current->next;
 	}
-	reset_color(1);
 }
 
 t_bool	add_to_data(t_node *data_node, t_data *data)

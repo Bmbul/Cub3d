@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:25 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 07:11:37 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:07:14 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	validate_texture_paths(t_data *data)
 			if (fd != -1)
 				close(fd);
 			else
-				print_error_and_exit(BAD_ARG_FILE);
+				print_error_free_and_exit(data, BAD_ARG_FILE);
 		}
 		else
-			print_error_and_exit(WRONG_FILE_EXT);
+			print_error_free_and_exit(data, WRONG_FILE_EXT);
 	}
 }
 

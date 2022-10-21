@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:10:18 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 07:15:04 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:08:27 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	set_color(t_string color, int fd)
 void	set_error_color(void)
 {
 	set_color(RED_TERM, 2);
-}
-
-void	reset_color(int fd)
-{
-	set_color(WHITE_TERM, fd);
 }
 
 void	print_error(int error_code)
@@ -53,11 +48,17 @@ void	print_error(int error_code)
 	write(2, "\nERROR! ", 8);
 	write(2, error, ft_strlen(error));
 	write(2, "\n\n", 2);
-	reset_color(2);
+	set_color(WHITE_TERM, 2);
 }
 
 void	print_error_and_exit(int error_code)
 {
 	print_error(error_code);
-	exit(ERROR_CODE);
+	exit(error_code);
+}
+
+void	print_error_free_and_exit(t_data *data, int error_code)
+{
+	free_parsing_data(data);
+	print_error_and_exit(error_code);
 }

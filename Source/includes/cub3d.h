@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:09 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 07:02:30 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:15:29 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_bool		validate_map(t_data *data);
 t_bool		validate_input_file(t_string input);
 
 // parsing_utils.c
-t_bool		is_start_of_map(t_string str, int *return_value);
+t_bool		is_start_of_map(t_string *str, int *return_value);
 t_bool		is_attribute(t_string str);
 
 // parsing.c

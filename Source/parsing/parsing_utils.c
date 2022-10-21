@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:22 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:23 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:16:38 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ t_bool	is_attribute(t_string str)
 		|| starts_with_string(str, "F") || starts_with_string(str, "C"));
 }
 
-t_bool	is_start_of_map(t_string str, int *return_value)
+t_bool	is_start_of_map(t_string *str, int *return_value)
 {
-	*return_value = contains(str, '1') * str_contains_only(str, "1 \n");
-	str_contains_only(str, MAP_CHARS);
+	*return_value = contains(*str, '1') * str_contains_only(*str, "1 \n");
+	if (!(*return_value))
+	{
+		free(*str);
+		str = NULL;
+	}
 	return (*return_value);
 }

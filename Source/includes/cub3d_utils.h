@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:07 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 06:41:40 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:09:11 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void				free_array(t_text arr);
 t_text				ft_split(t_string const s, char c);
 
 // printer.c
-void				set_color(t_string color, int fd);
-void				reset_color(int fd);
 void				print_error(int error_code);
+void				set_color(t_string color, int fd);
 void				print_error_and_exit(int error_code);
+void				print_error_free_and_exit(t_data *data, int error_code);
 
 // atoi.c
 unsigned char		basic_atouc(t_string str);

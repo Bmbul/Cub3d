@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:56 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 06:45:49 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/21 08:06:06 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ int	main(int argc, t_string *argv)
 	data = data_init();
 	parse(argv[1], data);
 	if (data->error_code)
-	{
-		free_parsing_data(data);
-		print_error_and_exit(data->error_code);
-	}
+		print_error_free_and_exit(data, data->error_code);
 	start_game(data);
 }

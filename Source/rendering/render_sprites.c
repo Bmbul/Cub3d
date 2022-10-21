@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_sprites.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:37 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:38 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:51:56 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void	draw_sprites(t_data *data)
 	while (++(draw_data->i) < data->sprites_count)
 	{
 		setup_texture_sizes(data, draw_data);
-		// printf("sprite sizes: %d %d\n", draw_data->texture_width, draw_data->texture_height);
 		draw_data->pos.x = data->map_sprites[data->sprite_order[draw_data->i]]
 			.pos.x - data->player.pos.x;
 		draw_data->pos.y = data->map_sprites[data->sprite_order[draw_data->i]]
