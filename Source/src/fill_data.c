@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:09:48 by stadevos          #+#    #+#             */
+/*   Updated: 2022/10/21 02:18:50 by stadevos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 t_bool	fill_map_list(t_string line, t_data *data)
@@ -39,16 +51,9 @@ void	fill_map(t_string line, t_data *data)
 		return ;
 	data->map_width = get_longest_line(data->map_list);
 	data->sprites_count = get_sprites_count(data->map_list);
-	// printf("sprites count: %d\n", data->sprites_count);
 	get_map_sprites(data);
 	data->sprite_distance = malloc(sizeof(double) * data->sprites_count);
 	data->sprite_order = malloc(sizeof(int) * data->sprites_count);
-	int u  = -1;
-	while (++u < data->sprites_count)
-	{
-		printf("sprite[%d] = {[%f %f], with index %c}\n", u,
-			data->map_sprites[u].pos.x, data->map_sprites[u].pos.y, data->map_sprites[u].texture);
-	}
 	data->map_height = data->map_list->count;
 	if (data->map_width == 0)
 		return ;
@@ -60,7 +65,6 @@ void	fill_map(t_string line, t_data *data)
 		current = current->next;
 	}
 	data->map[i] = 0;
-	//free_list(data->map_list);
 }
 
 t_bool	fill_attribute(t_string line, t_data *data)
@@ -76,5 +80,6 @@ t_bool	fill_attribute(t_string line, t_data *data)
 	}
 	add(data->input_dict, new_node
 		(splitted[0], splitted[1]));
+	free_array(splitted);
 	return (TRUE);
 }
