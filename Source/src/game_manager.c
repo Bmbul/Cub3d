@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:54 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:55 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/23 01:12:35 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	update(t_data *data)
 	if (should_move(data))
 		move_player(data);
 	update_animations(data);
+	update_doors_states(data);
 	draw(data);
 }
 

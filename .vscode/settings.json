@@ -33,6 +33,7 @@
 		"type_traits": "c",
 		"utility": "c",
 		"__locale": "c",
-		"ios": "c"
+		"ios": "c",
+		"linkedlist.h": "c"
 	}
 }

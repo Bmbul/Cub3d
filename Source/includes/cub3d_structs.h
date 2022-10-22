@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:06 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 05:56:20 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/23 00:58:48 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_sprite_draw	t_sprite_draw;
 typedef struct s_sprite_info	t_sprite_info;
 typedef struct s_mouse			t_mouse;
 typedef struct s_anim_sprite	t_animated_sprite;
+typedef struct s_door_sprites	t_door_sprites;
 typedef struct s_minimap		t_minimap;
 
 struct s_minimap {
@@ -148,6 +149,11 @@ struct s_anim_sprite
 	t_img			*sprites;
 };
 
+struct s_door_sprites
+{
+	t_img			*sprites;
+};
+
 struct s_sprite_info
 {
 	t_vector	pos;
@@ -180,10 +186,12 @@ struct s_data
 	t_mov_inp			mov_input;
 	t_animated_sprite	*a_sprites;
 	t_sprite_info		*map_sprites;
+	t_door_sprites		*door_frames;
 	int					*sprite_order;
 	double				*sprite_distance;
 	double				z_buffer[WIN_WIDTH];
 	int					seen_door;
+	int					door_distance;
 };
 
 #endif

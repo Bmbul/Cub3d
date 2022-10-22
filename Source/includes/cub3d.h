@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:09 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 08:15:29 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/23 01:13:12 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void		print_data(t_data *data);
 t_data		*data_init(void);
 t_bool		add_to_data(t_node *data_node, t_data *data);
 void		mlx_data_init(t_data *data);
+
+// door.c
+void		update_door_map(t_data *data, int i, int j, t_text map);
+void		update_doors_states(t_data *data);
 
 // game_manager.c
 void		start_game(t_data	*data);

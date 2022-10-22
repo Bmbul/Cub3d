@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:39 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:40 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/23 00:47:40 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,17 @@ static unsigned int	get_texture_color(t_data *data, t_draw *draw)
 
 static unsigned int	get_door_color(t_data *data, t_draw *draw)
 {
-	int	tex_y;
-	int	color;
+	int		tex_y;
+	int		color;
+	char	state;
 
 	color = 0;
 	draw->tex_pos += draw->ratio;
 	tex_y = (int)draw->tex_pos & (64 - 1);
-	if (data->seen_door)
-		color = data->textures->door.texture[tex_y + 64 * draw->tex_x];
+	state = data->door_map[draw->map.x][draw->map.y];
+	if (state != 8)
+		color = data->door_frames->sprites[state - 1]
+			.texture[tex_y + 64 * draw->tex_x];
 	return (color);
 }
 
@@ -75,10 +78,11 @@ static void	vertical_line(t_data *data, t_draw draw, int col)
 			hex = get_color(*(data->floor_color));
 		else
 			hex = get_color(*(data->ceiling_color));
-		*(unsigned int *)(data->frame.data_addr
-				+ (row * data->frame.size_line + col
-					* (data->frame.bits_per_pixel / 8)))
-			= hex;
+		if (draw.letter != DOOR || (hex & 0x00FFFFFF) != 0)
+			*(unsigned int *)(data->frame.data_addr
+					+ (row * data->frame.size_line + col
+						* (data->frame.bits_per_pixel / 8)))
+				= hex;
 	}
 }
 
@@ -102,6 +106,7 @@ void	draw(t_data *data)
 		}
 		data->seen_door = 0;
 	}
+	data->door_distance = 0;
 	draw_sprites(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->window,

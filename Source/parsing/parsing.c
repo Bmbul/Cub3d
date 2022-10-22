@@ -6,7 +6,7 @@
 /*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:24 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 08:34:35 by syeghiaz         ###   ########.fr       */
+/*   Updated: 2022/10/23 01:05:25 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	parse(t_string path, t_data *data)
 		return ;
 	}
 	read_from_input(data);
-	print_map(data);
 	if (!validate_arguments(data))
 		data->error_code = BAD_ARGUMENT;
 	else if (!validate_map(data))

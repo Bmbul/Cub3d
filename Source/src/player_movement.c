@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stadevos <stadevos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: syeghiaz <syeghiaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 00:09:58 by stadevos          #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:59 by stadevos         ###   ########.fr       */
+/*   Updated: 2022/10/23 01:01:51 by syeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 t_bool	can_move(t_data *data, t_vector mov_dir, t_tuple inp_dir)
 {
 	char	map_letter;
+	char	door_letter;
 
 	map_letter = data->map[(int)(data->player.pos.x + inp_dir.x
 			* mov_dir.x * MOVEMENT_SPEED)]
 	[(int)(data->player.pos.y + inp_dir.y
 			* mov_dir.y * MOVEMENT_SPEED)];
-	return (!contains("123", map_letter));
+	door_letter = data->map[(int)(data->player.pos.x + inp_dir.x
+			* mov_dir.x * MOVEMENT_SPEED)]
+	[(int)(data->player.pos.y + inp_dir.y
+			* mov_dir.y * MOVEMENT_SPEED)];
+	return (!(contains("12", map_letter) || (map_letter == '3'
+				&& door_letter == '8')));
 }
 
 void	move_forward(t_data *data, int dir)
